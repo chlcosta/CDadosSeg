@@ -4,12 +4,17 @@
 **Aluno**: Carlos Humberto
 
 **Requisitos**: 
-    pip install lxml
-    pip install beautifulsoup4
-    pip install pandas
+
+```
+    - pip install lxml
+    - pip install beautifulsoup4
+    - pip install pandas
+```
 
 **Modo Execução**:
-    python3 Parte1.py manifest/    
+
+   - python3 Parte1.py manifest/    
 
 **Modo Execução Debug**:
-    python3 Parte1.py manifest/ debug
+
+   - python3 Parte1.py manifest/ debug
