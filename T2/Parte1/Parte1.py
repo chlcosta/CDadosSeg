@@ -87,6 +87,7 @@ def getListPermissions(files):
     for i, r in df2.iterrows():
         print(r['app'] + ': ' + str(r['permissoes']))
 
+    dff.drop_duplicates(subset=['app', 'permissao'], keep='first',inplace=True)  
     return dff
 
 
@@ -100,8 +101,9 @@ def getListUniquePermissions(df):
     print('Permissões únicas por APK')
     print('=================================')    
 
+    #pd.set_option('display.max_rows', df.shape[0]+1)                      
     df['count'] = df.groupby(['permissao'])['permissao'].transform('count')
-    df.drop_duplicates()
+
     df = df.loc[df['count'] == 1]
 
     df2 = df.groupby('app')['permissao'].apply(list).reset_index(name='permissoes')
@@ -128,7 +130,7 @@ def getListCommonPermissions(df):
 
     numApps = df['app'].nunique()
 
-    df = df.loc[df['count'] == numApps]
+    df = df.loc[df['count'] >= numApps]
     df = df.reset_index(drop=True)
     df2 = df.drop_duplicates(subset ="permissao", keep = 'first') 
     
