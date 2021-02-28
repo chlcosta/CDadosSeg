@@ -21,36 +21,35 @@ https://mid.curitiba.pr.gov.br/dadosabertos/Sigesguarda/2015-11-25_sigesguarda_-
 Equipe: Carlos e Laércio
 
 **Que tipos de dados você tem, majoritariamente (atributos numéricos, textuais)?**
-
-    - Os dados são majoritariamente **textuais**, no entanto, há dados temporais como data, hora e dia da semana.
+ - Os dados são majoritariamente **textuais**, no entanto, há dados temporais como data, hora e dia da semana.
 
 **Qual seu objetivo com esse dataset?**
 
-    - Realizar análises sobre as ocorrências atendidas pela Guarda Municipal de Curitiba;
-    - Quais as ocorrências mais comuns?
-    - Quais os tipos de ocorrências que mais ocorrem em determinadas regiões?
-    - Os tipos de ocorrências variam conforme hora, dia da semana, mês, ano?
-    - É verificada alguma tendência de crescimento/diminuição de determinado tipo de ocorrência?
+ - Realizar análises sobre as ocorrências atendidas pela Guarda Municipal de Curitiba;
+ - Quais as ocorrências mais comuns?
+ - Quais os tipos de ocorrências que mais ocorrem em determinadas regiões?
+ - Os tipos de ocorrências variam conforme hora, dia da semana, mês, ano?
+ - É verificada alguma tendência de crescimento/diminuição de determinado tipo de ocorrência?
 
 **Seu dataset é rotulado de que maneira?**
 
-    - O dataset, após tratamento nos dados, possui as seguintes colunas:
-        - *1 N*
-        - *2 ATENDIMENTO_ANO*
-        - *3 ATENDIMENTO_BAIRRO_NOME*
-        - *4 EQUIPAMENTO_URBANO_NOME*
-        - *5 LOGRADOURO_NOME*
-        - *6 NATUREZA1_DESCRICAO*
-        - *7 SUBCATEGORIA1_DESCRICAO*
-        - *8 OCORRENCIA_ANO*
-        - *9 OCORRENCIA_CODIGO*
-        - *10 OCORRENCIA_DATA*
-        - *11 OCORRENCIA_DIA_SEMANA*
-        - *12 OCORRENCIA_HORA*
-        - *13 OCORRENCIA_MES*
-        - *14 ORIGEM_CHAMADO_DESCRICAO*
-        - *15 REGIONAL_FATO_NOME*
-    - Foi utilizado o script **T3-formataDataset.py** para realizar o tratamento no dataset;
+ - O dataset, após tratamento nos dados, possui as seguintes colunas:
+  - *1 N*
+  - *2 ATENDIMENTO_ANO*
+  - *3 ATENDIMENTO_BAIRRO_NOME*
+  - *4 EQUIPAMENTO_URBANO_NOME*
+  - *5 LOGRADOURO_NOME*
+  - *6 NATUREZA1_DESCRICAO*
+  - *7 SUBCATEGORIA1_DESCRICAO*
+  - *8 OCORRENCIA_ANO*
+  - *9 OCORRENCIA_CODIGO*
+  - *10 OCORRENCIA_DATA*
+  - *11 OCORRENCIA_DIA_SEMANA*
+  - *12 OCORRENCIA_HORA*
+  - *13 OCORRENCIA_MES*
+  - *14 ORIGEM_CHAMADO_DESCRICAO*
+  - *15 REGIONAL_FATO_NOME*
+ - Foi utilizado o script **T3-formataDataset.py** para realizar o tratamento no dataset;
 
 **Como é a distribuição dos dados do dataset?**
 
