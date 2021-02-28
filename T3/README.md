@@ -74,6 +74,6 @@ Equipe: Carlos e Laércio
 **Quais colunas/atributos você julga ser interessante manter e remover? Por quê?**
 
 - Foram mantidos 14 atribudos dos 21 que originalmente faziam parte do dataset.
-- Considerou-se que os atributos removidos não contribuiriam para o tipo de análise proposta;
+- Considerou-se que os atributos removidos não contribuiriam para a análise proposta;
 
 
