@@ -56,19 +56,19 @@ Equipe: Carlos e Laércio
  - O dataset possui 327.409 registros e 15 atributos;
  - Foi utilizado o script **T3-exploracaoDados.py** para realizar a exploração do dataset;
  - Distribuição das Amostras de ATENDIMENTO_ANO X QTD:
-  - *2009, 24897*
-  - *2010, 22517*
-  - *2011, 21455*
-  - *2012, 19761*
-  - *2013, 24453*
-  - *2014, 25260*
-  - *2015, 25540*
-  - *2016, 21460*
-  - *2017, 22133*
-  - *2018, 24155*
-  - *2019, 33754*
-  - *2020, 57457*
-  - *2021,  4567*
+   - *2009, 24897*
+   - *2010, 22517*
+   - *2011, 21455*
+   - *2012, 19761*
+   - *2013, 24453*
+   - *2014, 25260*
+   - *2015, 25540*
+   - *2016, 21460*
+   - *2017, 22133*
+   - *2018, 24155*
+   - *2019, 33754*
+   - *2020, 57457*
+   - *2021,  4567*
 
 
 **Quais colunas/atributos você julga ser interessante manter e remover? Por quê?**
