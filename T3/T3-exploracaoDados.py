@@ -4,7 +4,7 @@
 #   pip install pandas
 #   pip install matplotlib
 #   pip install humanize
-
+#   pip install xlsxwriter
 
 import os, sys
 import pandas as pd
@@ -17,11 +17,17 @@ import datetime
 #DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-originalcsv" 
 DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-editado.csv" 
 
+#Arquivo XLS com as saidas
+xlsOut = pd.ExcelWriter('relatorios.xlsx', engine='xlsxwriter')
+
+
 
 
 # EXIBE DISTRIBUICAO POR ATRIBUTO
 # ----------------------------------------------------------------
 def showDistribuicao(df, atributo, orderByQtd = False, qtdMin = 0):
+
+    global xlsOut
 
     if(orderByQtd == False):
         df2 = df.sort_values(by=atributo,ascending=False).groupby(atributo).size().to_frame('QTD')
@@ -31,9 +37,13 @@ def showDistribuicao(df, atributo, orderByQtd = False, qtdMin = 0):
     if(qtdMin != 0):
         df2 = df2[df2.QTD > qtdMin]
 
-
     pd.set_option('display.max_rows', None)
+
+    df2.to_excel(xlsOut, sheet_name=atributo)
+
     print(df2)
+
+
 
 # EXIBE REGISTROS DE DETERMINADO BAIRRO
 # ----------------------------------------------------------------
@@ -49,6 +59,69 @@ def showRegistrosbyNatureza(df, n):
     df2 = df.loc[df['NATUREZA1_DESCRICAO'] == n]
     pd.set_option('display.max_rows', None)
     print(df2)    
+
+
+# EXIBE HEATMAP DIA X ANO
+# ----------------------------------------------------------------
+def showHeatmapDiaAno(df):
+
+    global xlsOut
+
+    pd.set_option('display.max_rows', None)
+    
+    df1 = df.loc[df['OCORRENCIA_MES'] == 1].groupby('OCORRENCIA_DIA').size().to_frame('JAN')        
+    df2 = df.loc[df['OCORRENCIA_MES'] == 2].groupby('OCORRENCIA_DIA').size().to_frame('FEV')            
+    df3 = df.loc[df['OCORRENCIA_MES'] == 3].groupby('OCORRENCIA_DIA').size().to_frame('MAR')            
+    df4 = df.loc[df['OCORRENCIA_MES'] == 4].groupby('OCORRENCIA_DIA').size().to_frame('ABR')
+    df5 = df.loc[df['OCORRENCIA_MES'] == 5].groupby('OCORRENCIA_DIA').size().to_frame('MAI')
+    df6 = df.loc[df['OCORRENCIA_MES'] == 6].groupby('OCORRENCIA_DIA').size().to_frame('JUN')
+    df7 = df.loc[df['OCORRENCIA_MES'] == 7].groupby('OCORRENCIA_DIA').size().to_frame('JUL')
+    df8 = df.loc[df['OCORRENCIA_MES'] == 8].groupby('OCORRENCIA_DIA').size().to_frame('AGO')
+    df9 = df.loc[df['OCORRENCIA_MES'] == 9].groupby('OCORRENCIA_DIA').size().to_frame('SET')
+    df10 = df.loc[df['OCORRENCIA_MES'] == 10].groupby('OCORRENCIA_DIA').size().to_frame('OUT')
+    df11 = df.loc[df['OCORRENCIA_MES'] == 11].groupby('OCORRENCIA_DIA').size().to_frame('NOV')
+    df12 = df.loc[df['OCORRENCIA_MES'] == 12].groupby('OCORRENCIA_DIA').size().to_frame('DEZ')
+
+    dff = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12], axis=1)
+    dff = dff.fillna(0).astype(int)
+
+    print('HEATMAP DIA X ANO')
+    print(dff)
+
+    dff.to_excel(xlsOut, sheet_name='HEATMAP-DIA-ANO')
+
+
+# EXIBE TENDENCIAS DAS PRINCIPAIS OCORRÊNCIAS
+# ----------------------------------------------------------------
+def showTendenciasOcorrencias(df):
+
+    global xlsOut
+
+    pd.set_option('display.max_rows', None)
+    
+    df1 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Uso de substância ilícita'].groupby('ATENDIMENTO_ANO').size().to_frame('Uso Subs.Ilícitas')        
+    df2 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Apoio ao cidadão - PRESTAÇÃO DE SOCORRO/SALVAMENTO'].groupby('ATENDIMENTO_ANO').size().to_frame('Apoio Socorro/Salvamento')            
+    df3 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Vandalismo'].groupby('ATENDIMENTO_ANO').size().to_frame('Vandalismo')            
+    df4 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Pichação'].groupby('ATENDIMENTO_ANO').size().to_frame('Pichação')
+    df5 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Disparo de Alarme (violação)'].groupby('ATENDIMENTO_ANO').size().to_frame('Disparo Alarme')
+    df6 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Cão solto em via pública'].groupby('ATENDIMENTO_ANO').size().to_frame('Cão solto')
+    df7 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Transeunte'].groupby('ATENDIMENTO_ANO').size().to_frame('Transeunte')
+    df8 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Transporte Coletivo'].groupby('ATENDIMENTO_ANO').size().to_frame('Transporte Coletivo')
+    df9 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'ORIENTAÇÃO COVID-19'].groupby('ATENDIMENTO_ANO').size().to_frame('Orientação Covid')
+    df10 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Apoio ao SAMU'].groupby('ATENDIMENTO_ANO').size().to_frame('Apoio SAMU')
+    df11 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Invasão de equipamento/patrimônio público'].groupby('ATENDIMENTO_ANO').size().to_frame('Invasão patrimônio público')
+    df12 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Desordem'].groupby('ATENDIMENTO_ANO').size().to_frame('Desordem')
+    df13 = df.loc[df['SUBCATEGORIA1_DESCRICAO'] == 'Arrombamento'].groupby('ATENDIMENTO_ANO').size().to_frame('Arrombamento')
+
+    dff = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12,df13], axis=1)
+    dff = dff.fillna(0).astype(int)
+
+    print('TENDENCIAS DAS PRINCIPAIS OCORRÊNCIAS')
+    print(dff)
+
+    dff.to_excel(xlsOut, sheet_name='TENDENCIAS-OCORRENCIAS')    
+    
+
 
 
 
@@ -85,7 +158,6 @@ if __name__ == '__main__':
 
     print('\nDISTRIBUIÇÃO DAS AMOSTRAS')
     print('=========================================')
-
     showDistribuicao(df, 'ATENDIMENTO_ANO')
     showDistribuicao(df, 'OCORRENCIA_MES')
     showDistribuicao(df, 'OCORRENCIA_DIA_SEMANA')
@@ -97,93 +169,16 @@ if __name__ == '__main__':
     showDistribuicao(df, 'SUBCATEGORIA1_DESCRICAO', True)
     showDistribuicao(df, 'EQUIPAMENTO_URBANO_NOME', True, 500)    
     showDistribuicao(df, 'ORIGEM_CHAMADO_DESCRICAO')
+    showHeatmapDiaAno(df)
+    showTendenciasOcorrencias(df)
     
+    #Salva relatorio
+    xlsOut.save()
 
 
-    
-    #df['OCORRENCIA_DATA'] = df.loc[df.OCORRENCIA_DATA != '']['OCORRENCIA_DATA'].apply(lambda x: datetime.datetime.strptime(x[:-4], '%Y-%m-%d %H:%M:%S'))
-    #df['OCORRENCIA_HORA'] = df.loc[df.OCORRENCIA_HORA != '']['OCORRENCIA_HORA'].apply(lambda x: datetime.datetime.strptime(x, '%H:%M:%S'))    
-    
-    
-    #showRegistrosbyNatureza(df,'Sedução')
+    #showRegistrosbyNatureza(df,'Natureza da Ocorrencia')
     #print(df.loc[244158])
     #print(df.loc[130098])
     #showRegistrosbyBairro(df, 'ÁGUAS BELAS')
     
-    
-
-'''
-
-#Gera grafico
-#plt.yticks(np.arange(0, 1000, step=50))
-#plt.xticks(np.arange(df2.shape[0]),list(df2.index), rotation=90)
-#plt.savefig("grafico01.png")
-
-#OCORRENCIA_DIA_SEMANA
-df2 = df.fillna('VAZIO').groupby('OCORRENCIA_DIA_SEMANA').size().to_frame('QTD').sort_values(by='QTD',ascending=False)
-pd.set_option('display.max_rows', None)
-print('\n')
-print(df2)
-
-
-#ATENDIMENTO POR BAIRRO
-df2 = df.fillna('VAZIO').groupby('ATENDIMENTO_BAIRRO_NOME').size().to_frame('QTD').sort_values(by='QTD',ascending=False)
-pd.set_option('display.max_rows', None)
-print('\n')
-print(df2)
-
-valueY = df2.index.tolist()[:30]
-valueX = df2['QTD'].tolist()[:30]
-
-# Figure Size 
-fig, ax = plt.subplots(figsize =(12, 16)) 
-
-# Horizontal Bar Plot 
-ax.barh(valueY, valueX) 
-
-# Remove axes splines 
-for s in ['top', 'bottom', 'left', 'right']: 
-    ax.spines[s].set_visible(False) 
   
-# Remove x, y Ticks 
-ax.xaxis.set_ticks_position('none') 
-ax.yaxis.set_ticks_position('none') 
-  
-# Add padding between axes and labels 
-ax.xaxis.set_tick_params(pad = 5) 
-ax.yaxis.set_tick_params(pad = 10) 
-  
-# Add x, y gridlines 
-ax.grid(b = True, color ='grey', 
-        linestyle ='-.', linewidth = 0.5, 
-        alpha = 0.2) 
-  
-# Show top values  
-ax.invert_yaxis() 
-
-# Add annotation to bars 
-for i in ax.patches: 
-    plt.text(i.get_width()+1500, i.get_y()+0.5,  
-             str(round((i.get_width()),2)), 
-             fontsize = 10, fontweight ='bold', 
-             color ='grey') 
-
-plt.savefig("grafico01.png")
-exit()
-
-#NATUREZA
-df2 = df.fillna('VAZIO').groupby('NATUREZA1_DESCRICAO').size().to_frame('QTD').sort_values(by='QTD',ascending=False)
-pd.set_option('display.max_rows', None)
-print('\n')
-print(df2)
-
-
-#NATUREZA
-df2 = df.fillna('VAZIO').groupby('SUBCATEGORIA1_DESCRICAO').size().to_frame('QTD').sort_values(by='QTD',ascending=False)
-pd.set_option('display.max_rows', None)
-print('\n')
-print(df2)
-
-
-'''
-
