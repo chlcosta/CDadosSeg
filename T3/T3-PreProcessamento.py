@@ -55,7 +55,7 @@ colunasRemover = ['NATUREZA2_DESCRICAO', 'NATUREZA3_DESCRICAO','NATUREZA4_DESCRI
 'SUBCATEGORIA2_DESCRICAO', 'SUBCATEGORIA3_DESCRICAO','SUBCATEGORIA4_DESCRICAO', 'SUBCATEGORIA5_DESCRICAO',
 'NATUREZA1_DEFESA_CIVIL', 'NATUREZA2_DEFESA_CIVIL','NATUREZA3_DEFESA_CIVIL', 'NATUREZA4_DEFESA_CIVIL','NATUREZA5_DEFESA_CIVIL',
 'FLAG_EQUIPAMENTO_URBANO', 'FLAG_FLAGRANTE','OPERACAO_DESCRICAO', 'SECRETARIA_NOME', 'SECRETARIA_SIGLA', 
-'SERVICO_NOME','SITUACAO_EQUIPE_DESCRICAO', 'NUMERO_PROTOCOLO_156', 'OCORRENCIA_CODIGO'
+'SERVICO_NOME','SITUACAO_EQUIPE_DESCRICAO', 'NUMERO_PROTOCOLO_156', 'OCORRENCIA_CODIGO','OCORRENCIA_ANO'
 ]
 
 print('Remove ' + str(len(colunasRemover)) + ' colunas')
@@ -149,9 +149,33 @@ df.drop(df[(df['ATENDIMENTO_BAIRRO_NOME'] == 'JR TAISA')].index , inplace=True)
 
 
 #Remove registros com atributos nulos no campos abaixo
-colunaNaoNula = ['ATENDIMENTO_ANO','ATENDIMENTO_BAIRRO_NOME', 'NATUREZA1_DESCRICAO', 'OCORRENCIA_ANO', 'OCORRENCIA_DATA']
+colunaNaoNula = ['ATENDIMENTO_ANO','ATENDIMENTO_BAIRRO_NOME', 'NATUREZA1_DESCRICAO', 'OCORRENCIA_DATA']
 print('\nElimina registros com valor Nulo nas colunas: ' + str(colunaNaoNula))
 df.dropna(subset=colunaNaoNula, inplace=True)
+
+
+#Renomeia colunas
+nomesColunas = {
+  "ATENDIMENTO_ANO": "OC_ANO",
+  "ATENDIMENTO_BAIRRO_NOME": "OC_BAIRRO",
+  "EQUIPAMENTO_URBANO_NOME": 'OC_EQUIPAMENTO_URBANO',
+  "LOGRADOURO_NOME": 'OC_LOGRADOURO',
+  "NATUREZA1_DESCRICAO": 'OC_CATEGORIA',
+  "SUBCATEGORIA1_DESCRICAO": 'OC_SUBCATEGORIA',
+  "OCORRENCIA_DATA": 'OC_DATA',
+  "OCORRENCIA_DIA": 'OC_DIA',
+  "OCORRENCIA_MES": 'OC_MES',
+  "OCORRENCIA_HORA": 'OC_HORA',
+  "OCORRENCIA_PERIODO": 'OC_PERIODO_DIA',
+  "OCORRENCIA_DIA_SEMANA": 'OC_DIA_SEMANA',
+  "REGIONAL_FATO_NOME": 'OC_REGIONAL_BAIRRO',
+  "ORIGEM_CHAMADO_DESCRICAO": 'OC_ORIGEM_CHAMADO'
+}
+print('\nRenomeia colunas:')
+df.rename(columns = nomesColunas, inplace = True)
+
+df = df[['OC_ANO', 'OC_DIA', 'OC_MES', 'OC_HORA', 'OC_PERIODO_DIA', 'OC_DIA_SEMANA', 'OC_DATA', 'OC_CATEGORIA',
+'OC_SUBCATEGORIA','OC_BAIRRO', 'OC_REGIONAL_BAIRRO', 'OC_EQUIPAMENTO_URBANO', 'OC_LOGRADOURO', 'OC_ORIGEM_CHAMADO' ]]
 
 #Preview do dataset editado
 qtdRegistros = '{:,}'.format(df.shape[0]).replace(',','.')
@@ -159,6 +183,9 @@ print('\nSAIDA:')
 print(f'Quantidade registros: ' + qtdRegistros)
 print('Qtd colunas/atributos: ' + str(len(df.columns)))
 
+print('\nColunas:')
+for n, i in enumerate(df.columns,1):
+    print('  %s %s' % (n, i))
 
 #Salva dataset editado no formato UTR8
 print('\nSalva arquivo de saída: ' + DATAFILE_OUT)
