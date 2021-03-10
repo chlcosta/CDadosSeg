@@ -88,8 +88,8 @@ def showHeatmapDiaAno(df):
     print('HEATMAP DIA X ANO')
     print(dff)
 
-    dff.to_excel(xlsOut, sheet_name='HEATMAP-DIA-ANO')
-
+    dff.to_excel(xlsOut, sheet_name='HEATMAP-DIA-ANO') 
+    
 
 # EXIBE TENDENCIAS DAS PRINCIPAIS OCORRÊNCIAS
 # ----------------------------------------------------------------
@@ -97,30 +97,64 @@ def showTendenciasOcorrencias(df):
 
     global xlsOut
 
-    pd.set_option('display.max_rows', None)
-    
-    df1 = df.loc[df['OC_SUBCATEGORIA'] == 'Uso de substância ilícita'].groupby('OC_ANO').size().to_frame('Uso Subs.Ilícitas')        
-    df2 = df.loc[df['OC_SUBCATEGORIA'] == 'Apoio ao cidadão - PRESTAÇÃO DE SOCORRO/SALVAMENTO'].groupby('OC_ANO').size().to_frame('Apoio Socorro/Salvamento')            
-    df3 = df.loc[df['OC_SUBCATEGORIA'] == 'Vandalismo'].groupby('OC_ANO').size().to_frame('Vandalismo')            
-    df4 = df.loc[df['OC_SUBCATEGORIA'] == 'Pichação'].groupby('OC_ANO').size().to_frame('Pichação')
-    df5 = df.loc[df['OC_SUBCATEGORIA'] == 'Disparo de Alarme (violação)'].groupby('OC_ANO').size().to_frame('Disparo Alarme')
-    df6 = df.loc[df['OC_SUBCATEGORIA'] == 'Cão solto em via pública'].groupby('OC_ANO').size().to_frame('Cão solto')
-    df7 = df.loc[df['OC_SUBCATEGORIA'] == 'Transeunte'].groupby('OC_ANO').size().to_frame('Transeunte')
-    df8 = df.loc[df['OC_SUBCATEGORIA'] == 'Transporte Coletivo'].groupby('OC_ANO').size().to_frame('Transporte Coletivo')
-    df9 = df.loc[df['OC_SUBCATEGORIA'] == 'ORIENTAÇÃO COVID-19'].groupby('OC_ANO').size().to_frame('Orientação Covid')
-    df10 = df.loc[df['OC_SUBCATEGORIA'] == 'Apoio ao SAMU'].groupby('OC_ANO').size().to_frame('Apoio SAMU')
-    df11 = df.loc[df['OC_SUBCATEGORIA'] == 'Invasão de equipamento/patrimônio público'].groupby('OC_ANO').size().to_frame('Invasão patrimônio público')
-    df12 = df.loc[df['OC_SUBCATEGORIA'] == 'Desordem'].groupby('OC_ANO').size().to_frame('Desordem')
-    df13 = df.loc[df['OC_SUBCATEGORIA'] == 'Arrombamento'].groupby('OC_ANO').size().to_frame('Arrombamento')
+    #lista = {
+    #    "Uso de substância ilícita": "Uso Subs.Ilícita",
+    #    "Vandalismo": "Vandalismo",
+    #    "Disparo de Alarme (violação)": 'Disparo Alarme',
+    #    "Cão solto em via pública": 'Cão solto em via pública',
+    #    "Transporte Coletivo": 'Transporte Coletivo',
+    #    "Invasão de equipamento/patrimônio público": 'Invasão patrimônio público',
+    #    "Desordem": 'Desordem',
+    #    "Arrombamento": 'Arrombamento',
+    #    "Estacionamento irregular": 'Estacionamento irregular',
+    #    "Acidente de trânsito": 'Acidente de trânsito',
+    #    "Invasão ao transporte coletivo": 'Invasão ao transporte coletivo',
+    #    "Tráfico de drogas": 'Tráfico de drogas',
+    #    "Maus tratos a animais": 'Maus tratos a animais',
+    #    "Tumulto": 'Tumulto',
+    #    "Porte de substância ilícita": 'Porte de substância ilícita',
+    #}
+#
+    #dfs = []
+#
+    #for i,v in lista.items():
+    #    dfs.append(df.loc[df['OC_SUBCATEGORIA'] == i].groupby('OC_ANO').size().to_frame(v))
 
-    dff = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12,df13], axis=1)
+
+    lista = sorted(df['OC_SUBCATEGORIA_TXT'].unique().tolist())
+
+    dfs = []
+    for i in lista:
+        dfs.append(df.loc[df['OC_SUBCATEGORIA_TXT'] == i].groupby('OC_ANO','OC_DIA_SEMANA_TXT').size().to_frame(i))
+
+    
+    pd.set_option('display.max_rows', None)
+
+    dff = pd.concat(dfs, axis=1)
     dff = dff.fillna(0).astype(int)
 
     print('TENDENCIAS DAS PRINCIPAIS OCORRÊNCIAS')
     print(dff)
 
     dff.to_excel(xlsOut, sheet_name='TENDENCIAS-OCORRENCIAS')    
+        
+
+
+# EXIBE TENDENCIA ANUAL DE DETERMINADA OCORRENCIA
+# ----------------------------------------------------------------
+def showTendenciaByOcorrencia(df,subcat):
+
+    global xlsOut
+
+    pd.set_option('display.max_rows', None)
     
+    df1 = df.loc[df['OC_SUBCATEGORIA'] == subcat].groupby('OC_ANO').size().to_frame('QTD')        
+    df1 = df1.fillna(0).astype(int)
+
+    print('TENDENCIAS DA CATEGORIA: ' + subcat)
+    print(df1)
+    
+
 
 
 
@@ -160,18 +194,19 @@ if __name__ == '__main__':
     print('=========================================')
     showDistribuicao(df, 'OC_ANO')
     showDistribuicao(df, 'OC_MES')
-    showDistribuicao(df, 'OC_DIA_SEMANA')
-    showDistribuicao(df, 'OC_PERIODO_DIA')
+    showDistribuicao(df, 'OC_DIA_SEMANA_TXT')
+    showDistribuicao(df, 'OC_PERIODO_DIA_TXT')
     showDistribuicao(df, 'OC_DIA')
-    showDistribuicao(df, 'OC_BAIRRO',True)
-    showDistribuicao(df, 'OC_REGIONAL_BAIRRO')
-    showDistribuicao(df, 'OC_CATEGORIA', True)
-    showDistribuicao(df, 'OC_SUBCATEGORIA', True)
-    showDistribuicao(df, 'OC_EQUIPAMENTO_URBANO', True, 500)    
-    showDistribuicao(df, 'OC_ORIGEM_CHAMADO')
-    showHeatmapDiaAno(df)
+    showDistribuicao(df, 'OC_BAIRRO_TXT',True)
+    showDistribuicao(df, 'OC_SUBCATEGORIA_TXT', True)
+    #showDistribuicao(df, 'OC_EQUIPAMENTO_URBANO', True, 500)    
+    #showDistribuicao(df, 'OC_ORIGEM_CHAMADO')
+    #showHeatmapDiaAno(df)
+    #showTendenciasOcorrencias(df)
     showTendenciasOcorrencias(df)
-    
+    #showTendenciaByOcorrencia(df,'Pichação')
+
+
     #Salva relatorio
     xlsOut.save()
 
