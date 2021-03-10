@@ -15,7 +15,7 @@ import datetime
 
 #Arquivo a explorar
 #DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-originalcsv" 
-DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-editado.csv" 
+DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-editado-10OC.csv" 
 
 #Arquivo XLS com as saidas
 xlsOut = pd.ExcelWriter('relatorios.xlsx', engine='xlsxwriter')
@@ -154,6 +154,17 @@ def showTendenciasOcorrenciasAnoPeriodoDia(df):
 
 
 
+# EXIBE A CLASSE DE VALORES DE TODAS AS COLUNAS
+# ----------------------------------------------------------------
+def showClassesColunas():
+    global df
+
+    print('\n> EXIBE AS CLASSES DAS COLUNAS...')
+
+    for n, i in enumerate(df.columns,1):
+        lista = sorted(df[i].unique().tolist())
+        print('\n%s - %s (Qtd:%s)' % (n, i, len(lista)))      
+        print('  %s' % lista)
 
 
 
@@ -201,6 +212,7 @@ if __name__ == '__main__':
     #showTendenciasOcorrencias(df)
     showTendenciasOcorrencias(df)
     showTendenciasOcorrenciasAnoPeriodoDia(df)
+    showClassesColunas()
 
     #Salva relatorio
     xlsOut.save()

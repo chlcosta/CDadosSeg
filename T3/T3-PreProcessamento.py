@@ -12,7 +12,7 @@ import pandas as pd
 import humanize 
 
 DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-original.csv" 
-DATAFILE_OUT = "dataset/2021-02-01-sigesguarda-editado.csv" 
+DATAFILE_OUT = "dataset/2021-02-01-sigesguarda-editado-10OC.csv" 
 
 df = pd.read_csv(DATAFILE_IN,sep=';', encoding='iso-8859-1', low_memory=False) 
 
@@ -299,13 +299,15 @@ def filtraDataset():
         (df.SUBCATEGORIA1_DESCRICAO !=  'Invasão de equipamento/patrimônio público') &    
         (df.SUBCATEGORIA1_DESCRICAO !=  'Desordem') &
         (df.SUBCATEGORIA1_DESCRICAO !=  'Arrombamento') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Estacionamento irregular') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Acidente de trânsito') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Invasão ao transporte coletivo') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Tráfico de drogas') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Maus tratos a animais') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Tumulto') &
-        (df.SUBCATEGORIA1_DESCRICAO !=  'Porte de substância ilícita')].index, inplace=True)
+        (df.SUBCATEGORIA1_DESCRICAO !=  'Estacionamento irregular')].index, inplace=True)
+
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Estacionamento irregular') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Acidente de trânsito') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Invasão ao transporte coletivo') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Tráfico de drogas') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Maus tratos a animais') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Tumulto') &
+        #(df.SUBCATEGORIA1_DESCRICAO !=  'Porte de substância ilícita')].index, inplace=True)
 
     #Reorganiza Index
     df.reset_index(drop=True, inplace=True)
@@ -399,7 +401,7 @@ for n, i in enumerate(df.columns,1):
 
 #Salva dataset editado no formato UTR8
 print('\nSalva arquivo de saída: ' + DATAFILE_OUT)
-df.to_csv(DATAFILE_OUT, encoding="utf-8", index_label='N') 
+df.to_csv(DATAFILE_OUT, encoding="utf-8", index=False) 
 
 #Verifica se o tamanho do dataset diminuiu
 sizeOut = Path(DATAFILE_OUT).stat().st_size
