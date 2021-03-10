@@ -97,35 +97,11 @@ def showTendenciasOcorrencias(df):
 
     global xlsOut
 
-    #lista = {
-    #    "Uso de substância ilícita": "Uso Subs.Ilícita",
-    #    "Vandalismo": "Vandalismo",
-    #    "Disparo de Alarme (violação)": 'Disparo Alarme',
-    #    "Cão solto em via pública": 'Cão solto em via pública',
-    #    "Transporte Coletivo": 'Transporte Coletivo',
-    #    "Invasão de equipamento/patrimônio público": 'Invasão patrimônio público',
-    #    "Desordem": 'Desordem',
-    #    "Arrombamento": 'Arrombamento',
-    #    "Estacionamento irregular": 'Estacionamento irregular',
-    #    "Acidente de trânsito": 'Acidente de trânsito',
-    #    "Invasão ao transporte coletivo": 'Invasão ao transporte coletivo',
-    #    "Tráfico de drogas": 'Tráfico de drogas',
-    #    "Maus tratos a animais": 'Maus tratos a animais',
-    #    "Tumulto": 'Tumulto',
-    #    "Porte de substância ilícita": 'Porte de substância ilícita',
-    #}
-#
-    #dfs = []
-#
-    #for i,v in lista.items():
-    #    dfs.append(df.loc[df['OC_SUBCATEGORIA'] == i].groupby('OC_ANO').size().to_frame(v))
-
-
     lista = sorted(df['OC_SUBCATEGORIA_TXT'].unique().tolist())
 
     dfs = []
     for i in lista:
-        dfs.append(df.loc[df['OC_SUBCATEGORIA_TXT'] == i].groupby('OC_ANO','OC_DIA_SEMANA_TXT').size().to_frame(i))
+        dfs.append(df.loc[df['OC_SUBCATEGORIA_TXT'] == i].groupby('OC_ANO').size().to_frame(i))
 
     
     pd.set_option('display.max_rows', None)
@@ -137,6 +113,10 @@ def showTendenciasOcorrencias(df):
     print(dff)
 
     dff.to_excel(xlsOut, sheet_name='TENDENCIAS-OCORRENCIAS')    
+
+    #Forma mais imples
+    #df.pivot_table(index='OC_ANO', columns='OC_SUBCATEGORIA_TXT',aggfunc='size',fill_value=0)
+
         
 
 
@@ -151,10 +131,26 @@ def showTendenciaByOcorrencia(df,subcat):
     df1 = df.loc[df['OC_SUBCATEGORIA'] == subcat].groupby('OC_ANO').size().to_frame('QTD')        
     df1 = df1.fillna(0).astype(int)
 
-    print('TENDENCIAS DA CATEGORIA: ' + subcat)
+    print('TENDENCIAS POR OCORRENCIA: ' + subcat)
     print(df1)
     
 
+
+# EXIBE TENDENCIA DE CADA OCORRENCIA POR ANO E PERIODO DO DIA
+# ----------------------------------------------------------------
+def showTendenciasOcorrenciasAnoPeriodoDia(df):
+
+    global xlsOut
+
+    df1 = df.pivot_table(index='OC_ANO', 
+               columns=['OC_SUBCATEGORIA_TXT','OC_PERIODO_DIA_TXT'],
+               aggfunc='size',
+               fill_value=0)
+
+    print('TENDENCIAS DE OCORRENCIAS POR ANO E PERIODO DO DIA: ')
+    print(df1)
+
+    df1.to_excel(xlsOut, sheet_name='TENDENCIAS-OC-ANO-PERIODO')    
 
 
 
@@ -204,13 +200,13 @@ if __name__ == '__main__':
     #showHeatmapDiaAno(df)
     #showTendenciasOcorrencias(df)
     showTendenciasOcorrencias(df)
-    #showTendenciaByOcorrencia(df,'Pichação')
-
+    showTendenciasOcorrenciasAnoPeriodoDia(df)
 
     #Salva relatorio
     xlsOut.save()
 
 
+    #showTendenciaByOcorrencia(df,'Pichação')
     #showRegistrosbyNatureza(df,'Natureza da Ocorrencia')
     #print(df.loc[244158])
     #print(df.loc[130098])
