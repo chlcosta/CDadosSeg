@@ -1,10 +1,7 @@
-# TAREFA PRÁTICA 3
+# TRABALHO FINAL - CIENCIA DE DADOS PARA SEGURANCA
 # ALUNO: CARLOS HUMBERTO / LAERCIO
-# Requisitos: 
-#   pip install pandas
-#   pip install matplotlib
-#   pip install humanize
-#   pip install xlsxwriter
+#
+# EXPLORAÇÃO DE DADOS DO DATASET
 
 import os, sys
 import pandas as pd

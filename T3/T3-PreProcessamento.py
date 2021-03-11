@@ -1,10 +1,7 @@
-# TAREFA PRÁTICA 3 - PRE-PROCESSAMENTO
+# TRABALHO FINAL - CIENCIA DE DADOS PARA SEGURANCA
 # ALUNO: CARLOS HUMBERTO / LAERCIO
-# Requisitos: 
-#    pip install pandas
 #
-# Script gera 2 arquivos de saida, um dataset para análise e um dataset final para construção de modelos
-
+# PRE-PROCESSAMENTO DO DATASET E GERACAO DO DATASET DE TRABALHO
 
 import os, sys
 from pathlib import Path
@@ -434,7 +431,7 @@ print('\nDistribuicao Categoria:')
 print(data80.OC_SUBCATEGORIA_TXT.value_counts())
 #Salva Dataset
 data80.to_csv(DATAFILE_80_TXT, encoding="utf-8", index=False)
-data80.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT'], axis=1, inplace=True)
+data80.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT','OC_SUBCATEGORIA_TXT'], axis=1, inplace=True)
 data80.to_csv(DATAFILE_80, encoding="utf-8", index=False)
 
 print('\n > DATASET DE TESTE (20%):')
@@ -445,7 +442,7 @@ print('\nDistribuicao Categoria:')
 print(data20.OC_SUBCATEGORIA_TXT.value_counts())
 #Salva Dataset
 data20.to_csv(DATAFILE_20_TXT, encoding="utf-8", index=False)
-data20.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT'], axis=1, inplace=True)
+data20.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT','OC_SUBCATEGORIA_TXT'], axis=1, inplace=True)
 data20.to_csv(DATAFILE_20, encoding="utf-8", index=False)
 
 
