@@ -10,9 +10,14 @@ import os, sys
 from pathlib import Path
 import pandas as pd
 import humanize 
+from sklearn.model_selection import train_test_split
 
 DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-original.csv" 
-DATAFILE_OUT = "dataset/2021-02-01-sigesguarda-editado-10OC.csv" 
+DATAFILE_OUT = "dataset/sigesguarda-dataset-analise.csv" 
+DATAFILE_80 = "dataset/sigesguarda-dataset-80.csv"
+DATAFILE_80_TXT = "dataset/sigesguarda-dataset-80-txt.csv"
+DATAFILE_20 = "dataset/sigesguarda-dataset-20.csv"
+DATAFILE_20_TXT = "dataset/sigesguarda-dataset-20-txt.csv"
 
 df = pd.read_csv(DATAFILE_IN,sep=';', encoding='iso-8859-1', low_memory=False) 
 
@@ -285,8 +290,14 @@ def filtraDataset():
 
     print('\n> FILTRA dataset com determinados parametros de Anos e Tipos de Ocorrencias ')
 
-    #Exclui registros de 2021
+    #Mantem registros dos ultimos 6 anos (2020 a 2015) e remove 2021
     df.drop(df[(df['ATENDIMENTO_ANO'] == '2021')].index , inplace=True)
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2014')].index , inplace=True)
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2013')].index , inplace=True)
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2012')].index , inplace=True)
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2011')].index , inplace=True)    
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2010')].index , inplace=True)
+    df.drop(df[(df['ATENDIMENTO_ANO'] == '2009')].index , inplace=True)
 
     #Mantem no dataset apenas registros de determinados tipos de ocorrência e que não seja de 2021
     df.drop(df[
@@ -399,11 +410,42 @@ print('\nColunas:')
 for n, i in enumerate(df.columns,1):
     print('  %s %s' % (n, i))
 
-#Salva dataset editado no formato UTR8
-print('\nSalva arquivo de saída: ' + DATAFILE_OUT)
+#Salva dataset alteado para ANALISE
+print('\nDataset de analise: ' + DATAFILE_OUT)
 df.to_csv(DATAFILE_OUT, encoding="utf-8", index=False) 
 
 #Verifica se o tamanho do dataset diminuiu
 sizeOut = Path(DATAFILE_OUT).stat().st_size
 print('Tamanho arquivo:' + str(humanize.naturalsize(sizeOut)))
+
+
+#Exlui alguns campos para os datasets de uso
+df2 = df
+
+
+#Salva arquivos de treinamento e teste (80/20)
+data80, data20  = train_test_split(df2, train_size=0.8, random_state=42)
+
+print('\n > DATASET DE TREINO (80%):')
+print(data80.info())
+print('\nDistribuicao ANO:')
+print(data80.OC_ANO.value_counts())
+print('\nDistribuicao Categoria:')
+print(data80.OC_SUBCATEGORIA_TXT.value_counts())
+#Salva Dataset
+data80.to_csv(DATAFILE_80_TXT, encoding="utf-8", index=False)
+data80.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT'], axis=1, inplace=True)
+data80.to_csv(DATAFILE_80, encoding="utf-8", index=False)
+
+print('\n > DATASET DE TESTE (20%):')
+print(data20.info())
+print('\nDistribuicao ANO:')
+print(data20.OC_ANO.value_counts())
+print('\nDistribuicao Categoria:')
+print(data20.OC_SUBCATEGORIA_TXT.value_counts())
+#Salva Dataset
+data20.to_csv(DATAFILE_20_TXT, encoding="utf-8", index=False)
+data20.drop(['OC_DIA_SEMANA_TXT', 'OC_PERIODO_DIA_TXT','OC_BAIRRO_TXT'], axis=1, inplace=True)
+data20.to_csv(DATAFILE_20, encoding="utf-8", index=False)
+
 

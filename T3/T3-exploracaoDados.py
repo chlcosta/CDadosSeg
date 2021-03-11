@@ -15,10 +15,10 @@ import datetime
 
 #Arquivo a explorar
 #DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-originalcsv" 
-DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-editado-10OC.csv" 
+DATAFILE_IN  = "dataset/sigesguarda-dataset-80-txt.csv" 
 
 #Arquivo XLS com as saidas
-xlsOut = pd.ExcelWriter('relatorios.xlsx', engine='xlsxwriter')
+xlsOut = pd.ExcelWriter('sigesguarda-report-80.xlsx', engine='xlsxwriter')
 
 
 
@@ -209,19 +209,9 @@ if __name__ == '__main__':
     #showDistribuicao(df, 'OC_EQUIPAMENTO_URBANO', True, 500)    
     #showDistribuicao(df, 'OC_ORIGEM_CHAMADO')
     #showHeatmapDiaAno(df)
-    #showTendenciasOcorrencias(df)
     showTendenciasOcorrencias(df)
     showTendenciasOcorrenciasAnoPeriodoDia(df)
     showClassesColunas()
 
     #Salva relatorio
     xlsOut.save()
-
-
-    #showTendenciaByOcorrencia(df,'Pichação')
-    #showRegistrosbyNatureza(df,'Natureza da Ocorrencia')
-    #print(df.loc[244158])
-    #print(df.loc[130098])
-    #showRegistrosbyBairro(df, 'ÁGUAS BELAS')
-    
-  
