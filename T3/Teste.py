@@ -79,12 +79,19 @@ def executeKNN(x_train, x_test, y_train, y_test, k):
     model = OneVsRestClassifier(model)
     model.fit(x_train, y_train)
     y_pred = model.predict(x_test)
-    print("Precisão: %.3f" % precision_score(y_test, y_pred, average='macro'))
+    print("Precisão Geral: %.3f" % precision_score(y_test, y_pred, average='macro'))
     print("Mean Absolute Error: %.3f" % mean_absolute_error(y_test, y_pred))
     print("Acurácia: %.3f" % accuracy_score(y_test, y_pred))
     print("Matriz de confusão:")
     print(confusion_matrix(y_test, y_pred))
 
+    precisaoByClass = precision_score(y_test, y_pred,average=None)    
+    count = 1
+    for p in precisaoByClass:
+        print("Precisão Classe %s: %.3f" % (count, p))
+        count = count + 1
+    
+    exit(0)
     #Cria Curva ROC para o Modelo
     y_test_b = label_binarize(y_test, classes=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     y_pred_prob = model.predict_proba(x_test)
