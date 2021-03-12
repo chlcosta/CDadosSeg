@@ -30,8 +30,10 @@ def definePeriodoDia(x):
 
 
 
+# INICIO - PRE-PROCESSAMENTO
+# ----------------------------------------------------------------
 print('\n################################################')
-print('           FORMATA DATASET')
+print('       PRE-PROCESSAMENTO DE DADOS')
 print('################################################\n')
 
 print('Aquivo de entrada: ' + DATAFILE_IN)
@@ -144,8 +146,6 @@ df.drop(df[(df['ATENDIMENTO_BAIRRO_NOME'] == 'COLONIA SAO VENANCIO')].index , in
 df.drop(df[(df['ATENDIMENTO_BAIRRO_NOME'] == 'JARDIM BELA VISTA')].index , inplace=True)
 df.drop(df[(df['ATENDIMENTO_BAIRRO_NOME'] == 'JARDIM SANTA MÔNICA')].index , inplace=True)
 df.drop(df[(df['ATENDIMENTO_BAIRRO_NOME'] == 'JR TAISA')].index , inplace=True)
-
-
 
 
 #Remove registros com atributos nulos no campos abaixo

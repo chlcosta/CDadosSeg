@@ -192,6 +192,11 @@ print(x)
 print('\nClasses:')
 print(y)
 
+
+print('\nINICIO DA CONSTRUÇÃO DOS MODELOS...')
+print('---------------------------------------------------\n')
+
+
 #Separa os dados em Treino e Treinamento (80/20)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.20)
 
@@ -205,17 +210,17 @@ x_test = scaler.transform(x_test)
 
 #Executa KNN com valores variados
 executeKNN(x_train, x_test, y_train, y_test, 1)
-#executeKNN(x_train, x_test, y_train, y_test, 3)
-#executeKNN(x_train, x_test, y_train, y_test, 5)
+executeKNN(x_train, x_test, y_train, y_test, 3)
+executeKNN(x_train, x_test, y_train, y_test, 10)
 
 #EXECUTA KNN (K=1) - CROSS VALIDATION (K-FOLD=5)
-#executeKNNcomKfoldx_train, x_test, y_train, y_test)
+executeKNNcomKfold(x_train, x_test, y_train, y_test)
 
 #EXECUTA RandomForestClassifier (Estimadores = 10)
 executeRandomForest(x_train, x_test, y_train, y_test)
 
 #EXECUTA RandomForestClassifier (Estimadores = 10) COM CROSS VALIDATION (K-FOLD=5)
-#executeRandomForestKFold(x_train, x_test, y_train, y_test)
+executeRandomForestKFold(x_train, x_test, y_train, y_test)
 
 #EXECUTA SVM (Kernel = Linear)
 executeSVM(x_train, x_test, y_train, y_test)

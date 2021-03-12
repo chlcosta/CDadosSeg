@@ -12,10 +12,12 @@ import datetime
 
 #Arquivo a explorar
 #DATAFILE_IN  = "dataset/2021-02-01-sigesguarda-originalcsv" 
-DATAFILE_IN  = "dataset/sigesguarda-dataset-80-txt.csv" 
+#DATAFILE_IN  = "dataset/sigesguarda-dataset-80-txt.csv" 
+DATAFILE_IN  = "dataset/sigesguarda-dataset-analise.csv" 
+
 
 #Arquivo XLS com as saidas
-xlsOut = pd.ExcelWriter('sigesguarda-report-80.xlsx', engine='xlsxwriter')
+xlsOut = pd.ExcelWriter('sigesguarda-report.xlsx', engine='xlsxwriter')
 
 
 
