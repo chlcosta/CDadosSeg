@@ -281,10 +281,10 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 
 <table>
   <tr>
-	  <td colspan="2" style="width:100%;align=center"><b>Tabela 4 – Resultados RandomForests (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 4 – Resultados RandomForests (80%)</b></td>
   </tr>
-   <tr>    
-    <td></td>
+   <tr>
+    <td></td>	
 	   <td><b>n_estimators = 10</b></td>	
   </tr>
   <tr>
