@@ -181,28 +181,28 @@ O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e 
 
 <table>
   <tr>
-    <td colspan="4" style="width:100%;align=center">Tabela 2 – Resultados KNN</td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 2 – Resultados KNN (80%)</b></td>
   </tr>
    <tr>
-    <td><b></td>
+    <td></td>
     <td><b>K =1</b></td>
     <td><b>K = 3</b></td>
 	<td><b>K = 5</b></td>
   </tr>
   <tr>
-    <td>Precisão</td>
+	  <td><b>Precisão</b></td>
     <td>0.195</td>
     <td>0.203</td>
 	<td>0.217</td>
   </tr>
   <tr>
-    <td>Acurácia</td>
+	  <td><b>Acurácia</B></td>
     <td>0.256</td>
     <td>0.266</td>
 	<td>0.296</td>
   </tr>	
 <tr>
-    <td>Erro</td>
+	<td><b>Erro</B></td>
     <td>2.565</td>
     <td>2.847</td>
 	<td>2.695</td>
@@ -211,11 +211,99 @@ O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e 
 
 </table>
 
+Abaixo é apresentada a Matriz de Confusão aplicando K = 1. E na sequência as Curvas ROC das ocorrências tipo 1 e tipo 10, mostrando a variação na curva.
+
+Matriz de Confusão
+
 ![image](https://user-images.githubusercontent.com/63817167/111012046-4f066500-837a-11eb-8786-9d91bcdaf1b8.png)
 
-Nova divisão
+![image](https://user-images.githubusercontent.com/63817167/111014583-22a31680-8383-11eb-9233-0778a0c0ba5a.png)
+
+Fig. 8 – Curva ROC – KNN (K=1) – Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111014595-2e8ed880-8383-11eb-863c-b8f4c92910e1.png)
+
+Fig. 9 – Curva ROC – KNN (K=1) – Ocorrência Tipo 10
+
+Observou-se que a precisão geral é bastante baixa para o caso em questão. No entanto, a precisão pode ser melhor para determinado tipo de ocorrência.
+
+Na sequência são apresentadas as Curvas ROC da ocorrência tipo 1 e 10 utilizando KNN (K=1) com Validação Cruzada com 5 pastas (k-fold = 5).
+
+![image](https://user-images.githubusercontent.com/63817167/111014603-3f3f4e80-8383-11eb-9656-007c33e33179.png)
+
+Fig. 10 – Curva ROC – KNN (K=1) com Validação Cruzada (K-fold=5)  – Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111014608-46665c80-8383-11eb-8dc4-16c2ea5aaab7.png)
+
+Fig. 11 – Curva ROC – KNN (K=1) com Validação Cruzada (K-fold=5)  – Ocorrência Tipo 10
+
+O log completo da execução do modelo, com as precisões gerais, precisões utilizando validação cruzada e matrizes de confusão pode ser visto no arquivo           “log-Modelos-80.txt” no GitHub do trabalho.
+
+Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se obteve uma precisão bastante próxima, conforme observado na tabela 3.
+
+<table>
+  <tr>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 3 – Resultados KNN (20%)</b></td>
+  </tr>
+   <tr>
+    <td></td>
+    <td><b>K =1</b></td>
+    <td><b>K = 3</b></td>
+	<td><b>K = 5</b></td>
+  </tr>
+  <tr>
+	  <td><b>Precisão</b></td>
+    <td>0.219</td>
+    <td>0.217</td>
+	<td>0.193</td>
+  </tr>
+  <tr>
+	  <td><b>Acurácia</b></td>
+    <td>0.266</td>
+    <td>0.279</td>
+	<td>0.289</td>
+  </tr>	
+<tr>
+	<td><b>Erro</b></td>
+    <td>2.631</td>
+    <td>2.666</td>
+	<td>2.664</td>
+  </tr
+</table>
+
+</table>
 
 b) Random Forests
+
+Aplicou-se também o modelo RandomForest, que utiliza o conceito de árvores de decisão. O algoritmo cria uma estrutura similar a um fluxograma, com “nós” onde uma condição é verificada, e se atendida o fluxo segue por um ramo, caso contrário, por outro, sempre levando ao próximo nó, até a finalização da árvore.
+
+O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou fazer uma média de predições. A precisão, erro e a Matriz de Confusão são apresentados abaixo.
+
+<table>
+  <tr>
+	  <td colspan="2" style="width:100%;align=center"><b>Tabela 4 – Resultados RandomForests (80%)</b></td>
+  </tr>
+   <tr>    
+    <td></td>
+	   <td><b>n_estimators = 10</b></td>	
+  </tr>
+  <tr>
+	  <td><b>Precisão</b></td>
+    <td>0.270</td>
+    /td>
+  </tr>
+  <tr>
+	  <td><b>Acurácia</b></td>
+    <td>0.333</td>
+    /td>
+  </tr>	
+<tr>
+	<td><b>Erro</b></td>
+    <td>2.426</td>    
+  </tr
+</table>
+
+</table>
 
 c) Support Vector Machine (SVM)
 
