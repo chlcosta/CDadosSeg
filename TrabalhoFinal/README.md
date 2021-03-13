@@ -211,7 +211,6 @@ O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e 
 
 </table>
 
-
 ![image](https://user-images.githubusercontent.com/63817167/111012046-4f066500-837a-11eb-8786-9d91bcdaf1b8.png)
 
 Nova divisão
