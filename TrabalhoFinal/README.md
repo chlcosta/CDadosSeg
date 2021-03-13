@@ -102,6 +102,9 @@ Na sequência são apresentados os gráficos de distribuição do dataset basead
 Fig. 2 – Distribuições por (a) Ano, (b) Mês e (c) Dia da Semana
 
 <table>
+  <tr>
+    <td colspan="4" style="width:100%;align=center"></td>
+  </tr>
    <tr>
     <td><b></td>
     <td><b>Ano</b></td>
@@ -126,6 +129,8 @@ Fig. 2 – Distribuições por (a) Ano, (b) Mês e (c) Dia da Semana
     <td>2.873</td>
 	<td>4.731</td>
   </tr
+</table>
+
 </table>
 
 ![image](https://user-images.githubusercontent.com/63817167/111011900-b7087b80-8379-11eb-85d5-e6d29a9a098f.png)
