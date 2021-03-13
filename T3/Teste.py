@@ -88,7 +88,7 @@ def executeKNN(x_train, x_test, y_train, y_test, k):
     precisaoByClass = precision_score(y_test, y_pred,average=None)    
     count = 1
     for p in precisaoByClass:
-        print("Precisão Classe %s: %.3f" % (count, p))
+        print("Precisão por Classe %s: %.3f" % (count, p))
         count = count + 1
     
     exit(0)

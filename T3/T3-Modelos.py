@@ -18,6 +18,7 @@ from sklearn.multiclass import OneVsRestClassifier
 import matplotlib.pyplot as plt
 import pandas as pd
 from pathlib import Path
+import numpy
 
 DATAFILE_80  = "dataset/sigesguarda-dataset-80.csv" 
 DATAFILE_20  = "dataset/sigesguarda-dataset-20.csv" 
@@ -70,12 +71,17 @@ def executeKNNcomKfold(xtrain, xtest, ytrain, ytest):
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=12)
     i = 1
 
+    yTestList = []
+    yProbList = []
+
+
     for train_index, test_index in kf.split(xtrain, ytrain):
         X_train = xtrain[train_index]
         X_test = xtrain[test_index]
         y_train = ytrain[train_index]
         y_test = ytrain[test_index]
 
+        model = OneVsRestClassifier(model)
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
         print('\n--> FOLD = %s' % i)
@@ -92,7 +98,15 @@ def executeKNNcomKfold(xtrain, xtest, ytrain, ytest):
         print("Matriz de confusão:")
         print(confusion_matrix(y_test, y_pred))
 
+        y_test_b = label_binarize(y_test, classes=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        y_pred_prob = model.predict_proba(X_test)
+
+        yTestList.append(y_test_b)
+        yProbList.append(y_pred_prob)
+       
         i=i+1
+
+    criaCurvaROCKFold(yTestList,yProbList,'KNN-K1-KFOLD')
 
 
 #RandomForestClassifier  (Estimadores = 10)
@@ -140,6 +154,9 @@ def executeRandomForestKFold(xtrain, xtest, ytrain, ytest):
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=12)
     i = 1
 
+    yTestList = []
+    yProbList = []
+
     for train_index, test_index in kf.split(xtrain, ytrain):
         X_train = xtrain[train_index]
         X_test = xtrain[test_index]
@@ -162,7 +179,14 @@ def executeRandomForestKFold(xtrain, xtest, ytrain, ytest):
         print("Matriz de confusão:")
         print(confusion_matrix(y_test, y_pred))
 
+        y_test_b = label_binarize(y_test, classes=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        y_pred_prob = model.predict_proba(X_test)
+
+        yTestList.append(y_test_b)
+        yProbList.append(y_pred_prob)
+
         i=i+1
+    criaCurvaROCKFold(yTestList,yProbList,'RandomForest-KFOLD')
 
 
 #SVM (Kernel = Linear)
@@ -211,6 +235,9 @@ def executeSVMKFold(xtrain, xtest, ytrain, ytest):
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=12)
     i = 1
 
+    yTestList = []
+    yProbList = []
+
     for train_index, test_index in kf.split(xtrain, ytrain):
         X_train = xtrain[train_index]
         X_test = xtrain[test_index]
@@ -233,7 +260,15 @@ def executeSVMKFold(xtrain, xtest, ytrain, ytest):
         print("Matriz de confusão:")
         print(confusion_matrix(y_test, y_pred))
 
+        y_test_b = label_binarize(y_test, classes=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        y_pred_prob = model.decision_function(X_test)
+
+        yTestList.append(y_test_b)
+        yProbList.append(y_pred_prob)
+
         i=i+1
+
+    criaCurvaROCKFold(yTestList,yProbList,'SVM-KFOLD')
 
 
 #GERA CURVA ROC PARA MODELO, UMA CURVA PARA CADA CLASSE
@@ -272,10 +307,48 @@ def criaCurvaROC(y_test_b, y_pred_prob,modelo):
         plt.close('all')
 
 
+#GERA CURVA ROC PARA MODELO COM KFOLD, UMA CURVA PARA CADA CLASSE
+#---------------------------------------------------------
+def criaCurvaROCKFold(yTestList, yProbList,modelo):
+
+    global N_CLASSES
+
+
+    #Cria diretorio para graficos, se nao existir
+    try:
+        Path(GRAFICOS_DIR).mkdir(parents=False,exist_ok=True)
+    except:
+        print('ERRO! Não foi possível criar diretório de graficos.')
+        exit()
+
+    #PLOT Curva Roc
+    for i in range(N_CLASSES):      
+
+        plt.figure()
+
+        #Plota cada KFold
+        for a in range(len(yTestList)):
+            fpr = dict()
+            tpr = dict()
+            roc_auc = dict()
+            i3=a+1
+            fpr, tpr, _ = roc_curve(yTestList[a][:, i], yProbList[a][:, i])
+            roc_auc = auc(fpr, tpr)
+            plt.plot(fpr, tpr, label='ROC curve FOLD %s (%0.2f)' % (i3,roc_auc))
+
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.0])
+        i2=i+1
+        plt.xlabel('Taxa Falso Positivo (FP)')
+        plt.ylabel('Taxa Verdadeiro Positivo (VP)')
+        plt.title('Curva ROC - %s - Ocorrencia ID: %s' % (modelo,i2))
+        plt.legend(loc="lower right")
+        plt.savefig(GRAFICOS_DIR+'ROC-Curve-%s-Classe-%s.png' % (modelo,i2))
+        plt.close('all')
 
 
 #Leitura do Dataset
-df = pd.read_csv(DATAFILE_20,sep=',', low_memory=False) 
+df = pd.read_csv(DATAFILE_80,sep=',', low_memory=False) 
 
 
 #Exibe informações do dataset
@@ -302,7 +375,6 @@ print('---------------------------------------------------\n')
 #Separa os dados em Treino e Treinamento (80/20)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.20)
 
-print(x_train)
 
 #Normaliza os dados
 scaler = StandardScaler()  
