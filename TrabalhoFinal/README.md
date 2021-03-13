@@ -33,7 +33,7 @@ Originalmente o dataset possui 35 colunas/atributos, após o pré-processamento 
 
 <table>
   <tr>
-    <td colspan="2" style="width:100%;align=center"><b>Tabela 1 – Colunas/Atributos do Dataset<b/></td>
+    <td colspan="2" style="width:100%;align=center"><b> Tabela 1 – Colunas/Atributos do Dataset <b/></td>
   </tr>
     <tr>
 	<td>1</td>
@@ -181,7 +181,7 @@ O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e 
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 2 – Resultados KNN (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 2 – Resultados KNN (80%) </b></td>
   </tr>
    <tr>
     <td></td>
@@ -243,7 +243,7 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 3 – Resultados KNN (20%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 3 – Resultados KNN (20%) </b></td>
   </tr>
    <tr>
     <td></td>
@@ -281,10 +281,10 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 4 – Resultados RandomForests (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 4 – Resultados RandomForests (80%) </b></td>
   </tr>
    <tr>
-    <td></td>	
+    <td></td>
 	   <td><b>n_estimators = 10</b></td>	
   </tr>
   <tr>
@@ -331,7 +331,7 @@ Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – 
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 5 – Resultados RandomForests (20%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 5 – Resultados RandomForests (20%) </b></td>
   </tr>
    <tr>
     <td></td>	
@@ -362,7 +362,7 @@ Os resultados são apresentados abaixo:
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 6 – Resultados SVM (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 6 – Resultados SVM (80%) </b></td>
   </tr>
    <tr>
     <td></td>	
@@ -414,7 +414,7 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center"><b>Tabela 7 – Resultados SVM (20%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b> Tabela 7 – Resultados SVM (20%) </b></td>
   </tr> 
    <tr>
     <td></td>	
