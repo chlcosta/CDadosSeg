@@ -281,7 +281,7 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center">Tabela 4 – Resultados RandomForests (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 4 – Resultados RandomForests (80%)</b></td>
   </tr>
    <tr>
     <td></td>	
@@ -331,7 +331,7 @@ Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – 
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center">Tabela 5 – Resultados RandomForests (20%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 5 – Resultados RandomForests (20%)</b></td>
   </tr>
    <tr>
     <td></td>	
@@ -362,7 +362,7 @@ Os resultados são apresentados abaixo:
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center">Tabela 6 – Resultados SVM (80%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 6 – Resultados SVM (80%)</b></td>
   </tr>
    <tr>
     <td></td>	
@@ -414,7 +414,7 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
 
 <table>
   <tr>
-	  <td colspan="4" style="width:100%;align=center">Tabela 7 – Resultados SVM (20%)</b></td>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 7 – Resultados SVM (20%)</b></td>
   </tr> 
    <tr>
     <td></td>	
