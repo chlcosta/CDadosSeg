@@ -305,9 +305,7 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 
 </table>
 
-Matriz de Confusão
-
-![image](https://user-images.githubusercontent.com/63817167/111015155-2f753980-8386-11eb-81d3-be40bac0d08a.png)
+![image](https://user-images.githubusercontent.com/63817167/111015585-55034280-8388-11eb-9002-59b7ef9361ac.png)
 
 Apesar a precisão se manter baixa, para o caso em análise, já se mostrou melhor que a classificação com KNN.
 
@@ -331,12 +329,120 @@ Fig. 14 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – 
 
 Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – Ocorrência Tipo 10
 
+<table>
+  <tr>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 5 – Resultados RandomForests (20%)</b></td>
+  </tr>
+   <tr>
+    <td></td>	
+	   <td><b>n_estimators = 10</b></td>	
+  </tr>
+  <tr>
+	  <td><b>Precisão</b></td>
+    <td>0.267</td>
+    /td>
+  </tr>
+  <tr>
+	  <td><b>Acurácia</b></td>
+    <td>0.327</td>
+    /td>
+  </tr>	
+<tr>
+	<td><b>Erro</b></td>
+    <td>2.468</td>    
+  </tr
+</table>
+
+</table>
 
 c) Support Vector Machine (SVM)
 
+O último algoritmo analisado foi o Support Vector Machines (SVM). O algoritmo foi utilizado com o parâmetro Kernel =  “Linear’.
+Os resultados são apresentados abaixo:
+
+<table>
+  <tr>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 6 – Resultados SVM (80%)</b></td>
+  </tr>
+   <tr>
+    <td></td>	
+	   <td><b>Kernel = Linear</b></td>	
+  </tr>
+  <tr>
+	  <td><b>Precisão</b></td>
+    <td>0.144</td>
+    /td>
+  </tr>
+  <tr>
+	  <td><b>Acurácia</b></td>
+    <td>0.212</td>
+    /td>
+  </tr>	
+<tr>
+	<td><b>Erro</b></td>
+    <td>3.103</td>    
+  </tr
+</table>
+
+</table>
+
+![image](https://user-images.githubusercontent.com/63817167/111015481-b8d93b80-8387-11eb-9217-d677e738ffe6.png)
+
+Esse modelo apresentou a pior precisão dentre os demais modelos, para todos os tipos de ocorrências.
+
+Abaixo são apresentadas as Curvas ROC para o modelo.
+
+![image](https://user-images.githubusercontent.com/63817167/111015489-c4c4fd80-8387-11eb-9f7e-981c0bb36abc.png)
+
+Fig. 16 – Curva ROC – SVM –  Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111015497-cd1d3880-8387-11eb-827f-8d11aa4d1c24.png)
+
+Fig. 17 – Curva ROC – SVM –  Ocorrência Tipo 10
+
+Na sequência são apresentadas as Curvas ROC da ocorrência tipo 1 e 10 utilizando SVM com Validação Cruzada com 5 pastas (k-fold = 5).
+
+![image](https://user-images.githubusercontent.com/63817167/111015505-d7d7cd80-8387-11eb-979b-614e73bd1718.png)
+
+Fig. 18 – Curva ROC – SVM com Validação Cruzada ](K-fold=5)  – Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111015511-de664500-8387-11eb-8a64-17b5d1d416f8.png)
+
+Fig. 19 – Curva ROC – SVM com Validação Cruzada ](K-fold=5)  – Ocorrência Tipo 10
+
+Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se obteve uma precisão bastante próxima, conforme observado na tabela 7.
+
+<table>
+  <tr>
+	  <td colspan="4" style="width:100%;align=center"><b>Tabela 7 – Resultados SVM (20%)</b></td>
+  </tr>
+   <tr>
+    <td></td>	
+	   <td><b>Kernel = Linear</b></td>	
+  </tr>
+  <tr>
+	  <td><b>Precisão</b></td>
+    <td>0.137</td>
+    /td>
+  </tr>
+  <tr>
+	  <td><b>Acurácia</b></td>
+    <td>0.219</td>
+    /td>
+  </tr>	
+<tr>
+	<td><b>Erro</b></td>
+    <td>2.933</td>    
+  </tr
+</table>
+
+</table>
 
 ### IV.	CONCLUSÃO
 
+Nesta trabalho foram utilizados dados de atendimento de ocorrências da Guarda Municipal de Curitiba/PR nos últimos 6 anos (2015 a 2020) e com as 10 ocorrências  com maior frequência no período. Os dados foram divididos na proporção “80/20”, criando conjunto de treinamento e teste. 
+
+As precisões dos modelos foram bastante baixas para o conjunto de dados, o melhor resultado obtido foi com RandomForest que obteve precisão de 27% e o pior resultado foi com SVM, que obteve precisão de 14%. O modelo KNN apresentou precisão muito parecidas para K=1, 3 e 5, entre 19% e 21%. Embora este modelo tenha baixa precisão como modelo de previsão, ele fornece uma estrutura preliminar para análises futuras.
 
 ### V.	REFERÊNCIAS
 
