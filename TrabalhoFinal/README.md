@@ -179,7 +179,38 @@ a) K-Nearest Neighbour (KNN)
 
 O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e apresentados abaixo:
 
-![image](https://user-images.githubusercontent.com/63817167/111012032-44e46680-837a-11eb-9cb4-a88e02b10e5f.png)
+<table>
+  <tr>
+    <td colspan="4" style="width:100%;align=center">Tabela 2 – Resultados KNN</td>
+  </tr>
+   <tr>
+    <td><b></td>
+    <td><b>K =1</b></td>
+    <td><b>K = 3</b></td>
+	<td><b>K = 5</b></td>
+  </tr>
+  <tr>
+    <td>Precisão</td>
+    <td>0.195</td>
+    <td>0.203</td>
+	<td>0.217</td>
+  </tr>
+  <tr>
+    <td>Acurácia</td>
+    <td>0.256</td>
+    <td>0.266</td>
+	<td>0.296</td>
+  </tr>	
+<tr>
+    <td>Erro</td>
+    <td>2.565</td>
+    <td>2.847</td>
+	<td>2.695</td>
+  </tr
+</table>
+
+</table>
+
 
 ![image](https://user-images.githubusercontent.com/63817167/111012046-4f066500-837a-11eb-8786-9d91bcdaf1b8.png)
 
