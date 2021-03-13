@@ -305,6 +305,33 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 
 </table>
 
+Matriz de Confusão
+
+![image](https://user-images.githubusercontent.com/63817167/111015155-2f753980-8386-11eb-81d3-be40bac0d08a.png)
+
+Apesar a precisão se manter baixa, para o caso em análise, já se mostrou melhor que a classificação com KNN.
+
+![image](https://user-images.githubusercontent.com/63817167/111015169-3ef48280-8386-11eb-8d23-08edaf6afa89.png)
+
+Fig. 12 – Curva ROC – RandomForest –  Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111015177-4caa0800-8386-11eb-90e5-9b8b92a37ffb.png)
+
+Fig. 13 – Curva ROC – RandomForest –  Ocorrência Tipo 10
+
+Assim como no algoritmo KNN, observamos forte discrepâncias nas precisões dos tipos de Ocorrências.
+
+Na sequência são apresentadas as Curvas ROC da ocorrência tipo 1 e 10 utilizando RandomForest com Validação Cruzada com 5 pastas (k-fold = 5).
+
+![image](https://user-images.githubusercontent.com/63817167/111015189-5d5a7e00-8386-11eb-8627-f22ae6283cf2.png)
+
+Fig. 14 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – Ocorrência Tipo 1
+
+![image](https://user-images.githubusercontent.com/63817167/111015195-64818c00-8386-11eb-8501-7ec2ae4b0c9c.png)
+
+Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – Ocorrência Tipo 10
+
+
 c) Support Vector Machine (SVM)
 
 
