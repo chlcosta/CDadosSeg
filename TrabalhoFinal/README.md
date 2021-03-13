@@ -31,8 +31,57 @@ b)	Pré-Processamento
 O dataset foi pré-processamento para remoção de registros vazios, remoção de atributos desnecessários, correção de inconsistências e criação de novos atributos. Foi criado o script Python “PreProcessamento.py” para realização dessa tarefa, sendo o script disponibilizado o GitHub “https://github.com/chlcosta/CdadosSeg/tree/main/T3”.
 Originalmente o dataset possui 35 colunas/atributos, após o pré-processamento ficou com 11 atributos, apresentados na Tabela 1 a seguir.
 
-![image](https://user-images.githubusercontent.com/63817167/111011700-fb474c00-8378-11eb-8565-e4b65285189b.png)
+<table>
+  <tr>
+    <td colspan="2" style="width:100%;align=center"><b>Tabela 1 – Colunas/Atributos do Dataset<b/></td>
+  </tr>
+    <tr>
+	<td>1</td>
+    <td>OC_ANO – Ano da Ocorrência<br />2015, 2016, 2017, 2018, 2019, 2020</td>
+	  </tr>
+  <tr>
+	<td>2</td>
+    <td>OC_MES – Mês da Ocorrência<br />1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12</td>
+  </tr>
+  <tr>
+	<td>3</td>
+    <td>OC_DIA_SEMANA – Dia da Semana (Numérico)<br />1, 2, 3, 4, 5, 6, 7</td>
+  </tr>
+  <tr>
+	<td>4</td>
+    <td>OC_DIA_SEMANA_TXT – Dia da Semana (Textual)<br />1-DOMINGO', '2-SEGUNDA', '3-TERCA', '4-QUARTA', '5-QUINTA', '6-SEXTA', '7-SABADO'</td>
+  </tr>
+  <tr>
+	<td>5</td>
+    <td>OC_DIA – Dia do mês<br />1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31</td>
+  </tr>
+  <tr>
+	<td>6</td>
+    <td>OC_PERIODO_DIA – Período do Dia (Numérico)<br />1, 2, 3, 4</td>
+  </tr>
+  <tr>
+	<td>7</td>
+    <td>OC_PERIODO_DIA_TXT – Período do Dia (Textual)<br />'1-MANHA', '2-TARDE', '3-NOITE', '4-MADRUGADA'</td>
+  </tr>
+  <tr>
+	<td>8</td>
+    <td>OC_BAIRRO – Bairro da Ocorrência (Numérico)<br />1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,  …,  71, 72, 73, 74</td>
+  </tr>
+  <tr>
+	<td>9</td>
+    <td>OC_BAIRRO_TXT – Bairro da Ocorrência (Textual)<br />'ABRANCHES', 'ÁGUA VERDE', 'AHÚ', 'ALTO BOQUEIRÃO', 'ALTO DA GLÓRIA', 'ALTO DA RUA XV', 'ATUBA', 'AUGUSTA', 'BACACHERI', 'BAIRRO ALTO', 'BARREIRINHA', 'BATEL'...</td>
+  </tr>
+  <tr>
+	<td>10</td>
+    <td>OC_SUBCATEGORIA – Tipo da Ocorrência (Numérico)<br />1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td>
+  </tr>
+  <tr>
+	<td>11</td>
+    <td>OC_SUBCATEGORIA_TXT – Tipo da Ocorrência (Textual)<br />'Arrombamento', 'Cão solto em via pública', 'Desordem', 'Disparo de Alarme (violação)', 'Estacionamento irregular', 'Invasão de equipamento/patrimônio público', 'Pichação', 'Transporte Coletivo', 'Uso de substância ilícita', 'Vandalismo'</td>
+  </tr>
+</table>
 
+    
 O atributo de período do dia (OC_PERIODO_DIA_TXT) foi criado utilizando as seguintes referências, A madrugada vai da zero hora às 6h. 
 A manhã, das 6h às 12h (ou ao meio-dia). A tarde, das 12h às 18h. A noite, das 18h às 24h (ou meia-noite).
 Para o estudo optou-se por definir o intervalo dos últimos 6 anos para análise (2020-2015) e as 10 ocorrências de maior frequência no período, totalizando 35.424 registros.
