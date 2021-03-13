@@ -2,7 +2,7 @@ Ciência de Dados para Segurança (CI1030) - Trabalho Final
 =================
 #### Alunos:
 
-Carlos H. L. C.
+Carlos H.
 
 Láercio S. C. J.
 
