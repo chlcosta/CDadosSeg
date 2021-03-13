@@ -1,0 +1,603 @@
+
+ DATASET INFO:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 7085 entries, 0 to 7084
+Data columns (total 7 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   OC_ANO           7085 non-null   int64
+ 1   OC_MES           7085 non-null   int64
+ 2   OC_DIA_SEMANA    7085 non-null   int64
+ 3   OC_DIA           7085 non-null   int64
+ 4   OC_PERIODO_DIA   7085 non-null   int64
+ 5   OC_BAIRRO        7085 non-null   int64
+ 6   OC_SUBCATEGORIA  7085 non-null   int64
+dtypes: int64(7)
+memory usage: 387.6 KB
+None
+
+Atributos:
+[[2017    4    7    8    2    5]
+ [2019    6    7   15    2    9]
+ [2017    8    6   11    3   30]
+ ...
+ [2018    3    7   10    1    9]
+ [2016    2    3   23    3    5]
+ [2015    7    7   11    1   25]]
+
+Classes:
+[9 7 3 ... 5 5 7]
+
+INICIO DA CONSTRUÇÃO DOS MODELOS...
+---------------------------------------------------
+
+
+----------------------------------------------------
+KNN (K = 1) - PERCENTAGE SPLIT
+----------------------------------------------------
+Precisão Geral: 0.219
+  Precisão por Classe 1: 0.290
+  Precisão por Classe 2: 0.208
+  Precisão por Classe 3: 0.143
+  Precisão por Classe 4: 0.139
+  Precisão por Classe 5: 0.155
+  Precisão por Classe 6: 0.152
+  Precisão por Classe 7: 0.164
+  Precisão por Classe 8: 0.098
+  Precisão por Classe 9: 0.273
+  Precisão por Classe 10: 0.565
+Mean Absolute Error: 2.631
+Acurácia: 0.266
+Matriz de confusão:
+[[ 62   9  19  16  27  18  19  11  35  17]
+ [  2   5   2   3   4   3   5   1   3   1]
+ [  6   1  11   6  10  13   9   4   6   7]
+ [  8   1   5  14   6  10   9   7  12   9]
+ [ 39   1  13  15  23  17  24   9  21  14]
+ [ 22   2   8  17  18  19  17   7  22  13]
+ [ 26   1   7   9  18  15  26   9  31  23]
+ [  7   0   6   6  14   6  14   8   9   8]
+ [ 31   4   5   7  14  14  15  15  62  21]
+ [ 11   0   1   8  14  10  21  11  26 147]]
+
+----------------------------------------------------
+KNN (K = 3) - PERCENTAGE SPLIT
+----------------------------------------------------
+Precisão Geral: 0.217
+  Precisão por Classe 1: 0.315
+  Precisão por Classe 2: 0.333
+  Precisão por Classe 3: 0.174
+  Precisão por Classe 4: 0.121
+  Precisão por Classe 5: 0.094
+  Precisão por Classe 6: 0.142
+  Precisão por Classe 7: 0.153
+  Precisão por Classe 8: 0.103
+  Precisão por Classe 9: 0.251
+  Precisão por Classe 10: 0.480
+Mean Absolute Error: 2.666
+Acurácia: 0.279
+Matriz de confusão:
+[[ 35   0   6  14  16  23  24  17  63  35]
+ [  2   1   0   2   2   2   3   1  14   2]
+ [  6   0   4   3  10  12  13   7   7  11]
+ [  4   0   0   7   7   5  15  12  16  15]
+ [ 20   1   4   7   8  34  29  13  35  25]
+ [ 12   0   6  10  15  18  17  11  33  23]
+ [ 10   1   2   4   9  15  23  13  42  46]
+ [  2   0   1   3   7   7   8  10  20  20]
+ [ 17   0   0   6   8   8  11   9  85  44]
+ [  3   0   0   2   3   3   7   4  23 204]]
+
+----------------------------------------------------
+KNN (K = 5) - PERCENTAGE SPLIT
+----------------------------------------------------
+Precisão Geral: 0.193
+  Precisão por Classe 1: 0.285
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.178
+  Precisão por Classe 4: 0.109
+  Precisão por Classe 5: 0.179
+  Precisão por Classe 6: 0.186
+  Precisão por Classe 7: 0.152
+  Precisão por Classe 8: 0.105
+  Precisão por Classe 9: 0.253
+  Precisão por Classe 10: 0.480
+Mean Absolute Error: 2.664
+Acurácia: 0.289
+Matriz de confusão:
+[[ 47   0   7  11  24  19  16  14  56  39]
+ [  6   0   0   2   2   2   2   1  12   2]
+ [ 10   0   8   8   6  14   9   2   5  11]
+ [  6   0   1   7   9   7  11   8  19  13]
+ [ 27   2   8  10  21  29  18  10  26  25]
+ [ 20   0  13   8  13  24  11   6  29  21]
+ [ 23   1   4   7  11  16  16   5  41  41]
+ [  5   0   1   4  13   7   6   6  16  20]
+ [ 19   1   1   4  14   8  10   5  78  48]
+ [  2   0   2   3   4   3   6   0  26 203]]
+
+----------------------------------------------------
+KNN (K = 10) - PERCENTAGE SPLIT
+----------------------------------------------------
+Precisão Geral: 0.252
+  Precisão por Classe 1: 0.313
+  Precisão por Classe 2: 0.500
+  Precisão por Classe 3: 0.189
+  Precisão por Classe 4: 0.150
+  Precisão por Classe 5: 0.163
+  Precisão por Classe 6: 0.207
+  Precisão por Classe 7: 0.140
+  Precisão por Classe 8: 0.132
+  Precisão por Classe 9: 0.255
+  Precisão por Classe 10: 0.475
+Mean Absolute Error: 2.588
+Acurácia: 0.307
+Matriz de confusão:
+[[ 72   0   8   5  14  18  12  12  50  42]
+ [  8   1   0   2   3   2   2   1   8   2]
+ [ 14   0   7   9   8  12   9   0   5   9]
+ [ 13   0   2   9  10   6   8   3  17  13]
+ [ 37   0   3  14  15  27  19   5  28  28]
+ [ 26   0  10   6   9  25   9   5  31  24]
+ [ 28   0   3   5  13  15  13   4  38  46]
+ [  7   0   2   3  12   7   6   5  18  18]
+ [ 24   1   0   7   6   7  12   3  76  52]
+ [  1   0   2   0   2   2   3   0  27 212]]
+
+----------------------------------------------------
+KNN (K=1) - CROSS VALIDATION (K-FOLD=5)
+----------------------------------------------------
+
+--> FOLD = 1
+Precisão Geral: 0.187
+  Precisão por Classe 1: 0.218
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.119
+  Precisão por Classe 4: 0.118
+  Precisão por Classe 5: 0.130
+  Precisão por Classe 6: 0.154
+  Precisão por Classe 7: 0.161
+  Precisão por Classe 8: 0.085
+  Precisão por Classe 9: 0.321
+  Precisão por Classe 10: 0.564
+Mean Absolute Error: 2.722
+Acurácia: 0.250
+Matriz de confusão:
+[[ 42   4  13  16  20  21  18  10  20  10]
+ [  1   0   0   2   2   2   3   2   4   1]
+ [ 11   1   8   7   6  11   7   1   3   3]
+ [ 15   1   5  11  14  11  11   4  12   5]
+ [ 29   0   9  14  14  20  10   6  15  16]
+ [ 22   0  13   6   8  19  15   9   9   8]
+ [ 22   0  10  13  11   8  18   4  12  21]
+ [ 13   1   1   6   9  11   4   5  11   3]
+ [ 31   6   5  11  15  10  18  13  52  22]
+ [  7   0   3   7   9  10   8   5  24 115]]
+
+--> FOLD = 2
+Precisão Geral: 0.187
+  Precisão por Classe 1: 0.236
+  Precisão por Classe 2: 0.053
+  Precisão por Classe 3: 0.127
+  Precisão por Classe 4: 0.163
+  Precisão por Classe 5: 0.150
+  Precisão por Classe 6: 0.186
+  Precisão por Classe 7: 0.112
+  Precisão por Classe 8: 0.015
+  Precisão por Classe 9: 0.238
+  Precisão por Classe 10: 0.589
+Mean Absolute Error: 2.773
+Acurácia: 0.243
+Matriz de confusão:
+[[ 41   2   6  11  18  24  17  14  32   9]
+ [  2   1   0   3   2   3   2   0   4   0]
+ [ 11   1   7   9   5  10   7   4   3   1]
+ [ 21   3   4  14   7   6   9   4  15   6]
+ [ 19   2   5  11  16  14  10  12  35   9]
+ [ 16   2   8   7  11  21  17   7  14   6]
+ [ 18   3  11  10  17   5  13   6  16  20]
+ [  9   0   6   6  10   3   9   1  14   6]
+ [ 29   4   7  11  12  18  21  11  49  21]
+ [  8   1   1   4   9   9  11   9  24 112]]
+
+--> FOLD = 3
+Precisão Geral: 0.187
+  Precisão por Classe 1: 0.234
+  Precisão por Classe 2: 0.154
+  Precisão por Classe 3: 0.074
+  Precisão por Classe 4: 0.105
+  Precisão por Classe 5: 0.128
+  Precisão por Classe 6: 0.135
+  Precisão por Classe 7: 0.128
+  Precisão por Classe 8: 0.056
+  Precisão por Classe 9: 0.293
+  Precisão por Classe 10: 0.569
+Mean Absolute Error: 2.632
+Acurácia: 0.228
+Matriz de confusão:
+[[39  2 15 14 31 17 15  8 23  9]
+ [ 5  2  0  4  2  1  0  0  3  0]
+ [ 9  0  6  9 11  5  6  7  3  3]
+ [18  0 12  9 13  7 11  4 10  5]
+ [21  1 13 11 18 16 21  5 15 12]
+ [19  2 15  7 15 15 14  5 13  4]
+ [16  1  5 11 15 15 17  6 20 13]
+ [ 8  1  5  5  6  5 13  3 10  8]
+ [22  3  6  9 20 14 24 13 51 21]
+ [10  1  4  7 10 16 12  3 26 99]]
+
+--> FOLD = 4
+Precisão Geral: 0.188
+  Precisão por Classe 1: 0.219
+  Precisão por Classe 2: 0.077
+  Precisão por Classe 3: 0.107
+  Precisão por Classe 4: 0.150
+  Precisão por Classe 5: 0.144
+  Precisão por Classe 6: 0.184
+  Precisão por Classe 7: 0.137
+  Precisão por Classe 8: 0.014
+  Precisão por Classe 9: 0.333
+  Precisão por Classe 10: 0.517
+Mean Absolute Error: 2.721
+Acurácia: 0.248
+Matriz de confusão:
+[[ 37   2  11  12  21  13  17  20  25  15]
+ [  2   1   0   3   2   4   1   2   1   1]
+ [  9   1   6   5  11   8   8   2   4   4]
+ [ 13   0   8  12  14   5  12   3  14   9]
+ [ 22   3   6  12  18  15  14  12  16  14]
+ [ 14   1  10  12  14  19  11   5  14  10]
+ [ 20   2   7   7  12  19  16   5  20  11]
+ [ 17   1   5   4   6   7   5   1  14   3]
+ [ 26   1   2   4  16   6  17  14  63  34]
+ [  9   1   1   9  11   7  16   8  18 108]]
+
+--> FOLD = 5
+Precisão Geral: 0.188
+  Precisão por Classe 1: 0.247
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.127
+  Precisão por Classe 4: 0.169
+  Precisão por Classe 5: 0.154
+  Precisão por Classe 6: 0.159
+  Precisão por Classe 7: 0.120
+  Precisão por Classe 8: 0.131
+  Precisão por Classe 9: 0.273
+  Precisão por Classe 10: 0.500
+Mean Absolute Error: 2.723
+Acurácia: 0.244
+Matriz de confusão:
+[[ 41   4   8   6  22  21  27   7  28  10]
+ [  6   0   1   1   2   0   0   2   5   1]
+ [  8   1   7   3   6   7  13   3   5   5]
+ [ 10   4   4  11  16  12  10   7   5  10]
+ [ 22   6  11  10  19  10   9   3  22  20]
+ [ 19   2   8   4  15  17  16   7  10  11]
+ [ 20   2   6   6  11  16  16   5  21  15]
+ [  9   0   2   4   4   7   7   8  15   7]
+ [ 19   3   6  11  21  13  14  17  51  28]
+ [ 12   0   2   9   7   4  21   2  25 107]]
+
+----------------------------------------------------
+RandomForestClassifier (Estimadores = 10)
+----------------------------------------------------
+Precisão Geral: 0.267
+  Precisão por Classe 1: 0.289
+  Precisão por Classe 2: 0.267
+  Precisão por Classe 3: 0.217
+  Precisão por Classe 4: 0.138
+  Precisão por Classe 5: 0.150
+  Precisão por Classe 6: 0.214
+  Precisão por Classe 7: 0.240
+  Precisão por Classe 8: 0.127
+  Precisão por Classe 9: 0.386
+  Precisão por Classe 10: 0.640
+Mean Absolute Error: 2.468
+Acurácia: 0.327
+Matriz de confusão:
+[[ 87   4   6  13  25  22  20  11  24  21]
+ [  7   4   2   1   4   2   0   1   6   2]
+ [ 17   1  15   6   8  14   5   1   1   5]
+ [ 19   2   4  13  12   6   4   1  15   5]
+ [ 50   2  12  23  24  15   9   5  21  15]
+ [ 29   1   9  12  23  27  16   6  15   7]
+ [ 36   0   9  10  28  19  25   4  13  21]
+ [ 13   0   5   8  13   8   2   7  16   6]
+ [ 33   0   4   4  13  10  11  12  81  20]
+ [ 10   1   3   4  10   3  12   7  18 181]]
+
+----------------------------------------------------
+RandomForestClassifier (Estimadores = 10) COM CROSS VALIDATION (K-FOLD=5)
+----------------------------------------------------
+
+--> FOLD = 1
+Precisão Geral: 0.267
+  Precisão por Classe 1: 0.243
+  Precisão por Classe 2: 0.222
+  Precisão por Classe 3: 0.219
+  Precisão por Classe 4: 0.194
+  Precisão por Classe 5: 0.172
+  Precisão por Classe 6: 0.191
+  Precisão por Classe 7: 0.213
+  Precisão por Classe 8: 0.133
+  Precisão por Classe 9: 0.454
+  Precisão por Classe 10: 0.627
+Mean Absolute Error: 2.623
+Acurácia: 0.325
+Matriz de confusão:
+[[ 64   3  14  15  15  16  13   4  22   8]
+ [  3   2   1   5   1   2   1   1   0   1]
+ [  6   2  16   3   4  14   6   1   4   2]
+ [ 18   1   4  18  13  12   5   3  10   5]
+ [ 32   0   9  13  16  25   6   3  19  10]
+ [ 31   0  10   8   8  22   8   4   8  10]
+ [ 34   0   8  11   8   8  16   3  10  21]
+ [ 23   0   1   3  13   3   4   4   9   4]
+ [ 39   1   9  14   9   5   6   4  79  17]
+ [ 13   0   1   3   6   8  10   3  13 131]]
+
+--> FOLD = 2
+Precisão Geral: 0.221
+  Precisão por Classe 1: 0.256
+  Precisão por Classe 2: 0.100
+  Precisão por Classe 3: 0.143
+  Precisão por Classe 4: 0.197
+  Precisão por Classe 5: 0.167
+  Precisão por Classe 6: 0.222
+  Precisão por Classe 7: 0.150
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.325
+  Precisão por Classe 10: 0.645
+Mean Absolute Error: 2.626
+Acurácia: 0.298
+Matriz de confusão:
+[[ 57   3   4  12  18  14  14   7  36   9]
+ [  1   1   1   1   1   3   2   0   7   0]
+ [ 12   0   8   7   6  13   6   1   3   2]
+ [ 21   1   5  15  12   3   8   0  20   4]
+ [ 35   2   6  11  20  15   8   4  24   8]
+ [ 23   0  14   7   8  24  13   1  11   8]
+ [ 23   1   8   9  24  10  15   3   8  18]
+ [ 15   0   4   7   9   4   7   0  12   6]
+ [ 31   1   5   6  14  12  16  14  67  17]
+ [  5   1   1   1   8  10  11   2  18 131]]
+
+--> FOLD = 3
+Precisão Geral: 0.238
+  Precisão por Classe 1: 0.255
+  Precisão por Classe 2: 0.100
+  Precisão por Classe 3: 0.183
+  Precisão por Classe 4: 0.205
+  Precisão por Classe 5: 0.205
+  Precisão por Classe 6: 0.154
+  Precisão por Classe 7: 0.165
+  Precisão por Classe 8: 0.061
+  Precisão por Classe 9: 0.416
+  Precisão por Classe 10: 0.633
+Mean Absolute Error: 2.462
+Acurácia: 0.314
+Matriz de confusão:
+[[ 61   3   7  12  24  17  14   9  19   7]
+ [ 10   1   0   1   1   2   0   0   2   0]
+ [  7   0  11   9   8   8   5   4   4   3]
+ [ 18   0  10  17  12   7  11   2   7   5]
+ [ 30   1   4  12  26  17  15   7  14   7]
+ [ 31   2  17   8   9  14   7   3   9   9]
+ [ 25   1   5  12  14  12  17   1  16  16]
+ [ 14   1   3   6  10   4   9   2   9   6]
+ [ 36   1   3   2  17   6  16   4  74  24]
+ [  7   0   0   4   6   4   9   1  24 133]]
+
+--> FOLD = 4
+Precisão Geral: 0.237
+  Precisão por Classe 1: 0.314
+  Precisão por Classe 2: 0.100
+  Precisão por Classe 3: 0.125
+  Precisão por Classe 4: 0.152
+  Precisão por Classe 5: 0.150
+  Precisão por Classe 6: 0.272
+  Precisão por Classe 7: 0.192
+  Precisão por Classe 8: 0.053
+  Precisão por Classe 9: 0.423
+  Precisão por Classe 10: 0.589
+Mean Absolute Error: 2.545
+Acurácia: 0.327
+Matriz de confusão:
+[[ 76   0   5  10  25   5  14   4  23  11]
+ [  4   1   2   2   2   1   0   0   5   0]
+ [  9   1   9   4  10   9   9   2   2   3]
+ [ 11   1   8  10  12  14  10   3  13   8]
+ [ 31   1  11  13  18   9  11   1  21  16]
+ [ 22   2  18   7  13  22   9   1   8   8]
+ [ 27   2   9   6  10  11  19   2  19  14]
+ [ 20   0   7   3   6   3   4   1  16   3]
+ [ 32   2   2   6  14   2   7   4  91  23]
+ [ 10   0   1   5  10   5  16   1  17 123]]
+
+--> FOLD = 5
+Precisão Geral: 0.237
+  Precisão por Classe 1: 0.304
+  Precisão por Classe 2: 0.125
+  Precisão por Classe 3: 0.211
+  Precisão por Classe 4: 0.133
+  Precisão por Classe 5: 0.138
+  Precisão por Classe 6: 0.173
+  Precisão por Classe 7: 0.174
+  Precisão por Classe 8: 0.184
+  Precisão por Classe 9: 0.366
+  Precisão por Classe 10: 0.563
+Mean Absolute Error: 2.496
+Acurácia: 0.311
+Matriz de confusão:
+[[ 72   4   6   7  21  17  10   4  22  11]
+ [  8   2   1   0   1   1   0   0   4   1]
+ [ 11   0   8   6   6   9   5   3   7   3]
+ [ 22   2   4  11  12   5   8   6   7  12]
+ [ 26   1   8  17  15  15   9   5  24  12]
+ [ 23   3   4   7  16  17  16   3  10  10]
+ [ 27   1   3  11  10  13  15   3  18  17]
+ [ 13   0   2   5   6   6   5   7  10   9]
+ [ 24   3   2  14  16  10  10   5  67  32]
+ [ 11   0   0   5   6   5   8   2  14 138]]
+
+----------------------------------------------------
+SVM (Kernel = Linear)
+----------------------------------------------------
+Precisão Geral: 0.137
+  Precisão por Classe 1: 0.212
+  Precisão por Classe 2: 0.020
+  Precisão por Classe 3: 0.059
+  Precisão por Classe 4: 0.078
+  Precisão por Classe 5: 0.151
+  Precisão por Classe 6: 0.140
+  Precisão por Classe 7: 0.143
+  Precisão por Classe 8: 0.019
+  Precisão por Classe 9: 0.057
+  Precisão por Classe 10: 0.491
+Mean Absolute Error: 2.933
+Acurácia: 0.219
+Matriz de confusão:
+[[ 38  37   6  10  43  33  11   4  28  23]
+ [ 11   3   0   0   5   2   1   1   4   2]
+ [  8   6   3   7   4   5   7   8  20   5]
+ [  9  10   1   4  12   7   8   5  15  10]
+ [ 22  20   8  11  22  25   8  10  24  26]
+ [ 22  11   3   8  14  22  14  11  17  23]
+ [ 27  18   6   5  16  16  12   6  12  47]
+ [  9   9   3   2   9  15   6   1  13  11]
+ [ 31  23   9   3  17  24   9   6   8  58]
+ [  2  15  12   1   4   8   8   1   0 198]]
+
+----------------------------------------------------
+SVM (Kernel = Linear) COM K-FOLD=5 COM CROSS VALIDATION (K-FOLD=5)
+----------------------------------------------------
+
+--> FOLD = 1
+Precisão Geral: 0.105
+  Precisão por Classe 1: 0.209
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.000
+  Precisão por Classe 4: 0.000
+  Precisão por Classe 5: 0.000
+  Precisão por Classe 6: 0.000
+  Precisão por Classe 7: 0.068
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.324
+  Precisão por Classe 10: 0.450
+Mean Absolute Error: 3.161
+Acurácia: 0.295
+Matriz de confusão:
+[[ 97   0   0   0   0   0   7   0  49  21]
+ [ 11   0   0   0   0   0   0   0   4   2]
+ [ 33   0   0   0   0   0  12   0   8   5]
+ [ 54   0   0   0   0   0   3   0  16  16]
+ [ 68   0   0   0   0   0   8   0  33  24]
+ [ 49   0   0   0   0   0  15   0  22  23]
+ [ 50   0   0   0   0   0   5   0  29  35]
+ [ 38   0   0   0   0   0   2   0  13  11]
+ [ 52   0   0   0   0   0   3   0  90  38]
+ [ 12   0   0   0   0   0  19   0  14 143]]
+
+--> FOLD = 2
+Precisão Geral: 0.135
+  Precisão por Classe 1: 0.200
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.000
+  Precisão por Classe 4: 0.000
+  Precisão por Classe 5: 0.174
+  Precisão por Classe 6: 0.000
+  Precisão por Classe 7: 0.225
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.284
+  Precisão por Classe 10: 0.464
+Mean Absolute Error: 3.040
+Acurácia: 0.296
+Matriz de confusão:
+[[ 90   0   0   0  11   0   3   0  48  22]
+ [  8   0   0   0   0   0   0   0   9   0]
+ [ 46   0   0   0   2   0   1   0   4   5]
+ [ 56   0   0   0   2   0   2   0  16  13]
+ [ 60   0   0   0   8   0   5   0  38  22]
+ [ 51   0   0   0   7   0   5   0  30  16]
+ [ 53   0   0   0   7   0   9   0  15  35]
+ [ 33   0   0   0   2   0   4   0  13  12]
+ [ 51   0   0   0   3   0   1   0  76  52]
+ [  2   0   0   0   4   0  10   0  19 153]]
+
+--> FOLD = 3
+Precisão Geral: 0.111
+  Precisão por Classe 1: 0.239
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.000
+  Precisão por Classe 4: 0.000
+  Precisão por Classe 5: 0.000
+  Precisão por Classe 6: 0.000
+  Precisão por Classe 7: 0.122
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.312
+  Precisão por Classe 10: 0.440
+Mean Absolute Error: 2.921
+Acurácia: 0.313
+Matriz de confusão:
+[[106   0   0   0   0   0   5   0  43  19]
+ [  9   0   0   0   0   0   0   0   8   0]
+ [ 33   0   0   0   0   0   7   0  13   6]
+ [ 60   0   0   0   0   0   3   0   8  18]
+ [ 66   0   0   0   0   0   3   0  40  24]
+ [ 51   0   0   0   0   0   8   0  31  19]
+ [ 49   0   0   0   1   0   6   0  31  32]
+ [ 28   0   0   0   0   0   1   0  16  19]
+ [ 34   0   0   0   0   0   2   0  93  54]
+ [  8   0   0   0   1   0  14   0  15 150]]
+
+--> FOLD = 4
+Precisão Geral: 0.107
+  Precisão por Classe 1: 0.230
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.000
+  Precisão por Classe 4: 0.000
+  Precisão por Classe 5: 0.094
+  Precisão por Classe 6: 0.000
+  Precisão por Classe 7: 0.100
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.262
+  Precisão por Classe 10: 0.382
+Mean Absolute Error: 3.060
+Acurácia: 0.277
+Matriz de confusão:
+[[ 89   0   0   0  10   0   4   0  45  25]
+ [  7   0   0   0   0   0   0   0   9   1]
+ [ 36   0   0   0   4   0   2   0   9   7]
+ [ 41   0   0   0   4   0   1   0  21  23]
+ [ 58   0   0   0   6   0   4   0  30  34]
+ [ 53   0   0   0   6   0   2   0  32  17]
+ [ 34   0   0   0  11   0   3   0  27  44]
+ [ 28   0   0   0   4   0   0   0  16  15]
+ [ 40   0   0   0   4   0   0   0  72  67]
+ [  1   0   0   0  15   0  14   0  14 144]]
+
+--> FOLD = 5
+Precisão Geral: 0.104
+  Precisão por Classe 1: 0.232
+  Precisão por Classe 2: 0.000
+  Precisão por Classe 3: 0.000
+  Precisão por Classe 4: 0.000
+  Precisão por Classe 5: 0.000
+  Precisão por Classe 6: 0.000
+  Precisão por Classe 7: 0.105
+  Precisão por Classe 8: 0.000
+  Precisão por Classe 9: 0.301
+  Precisão por Classe 10: 0.404
+Mean Absolute Error: 3.009
+Acurácia: 0.300
+Matriz de confusão:
+[[ 94   0   0   0   0   0   3   0  55  22]
+ [ 10   0   0   0   0   0   0   0   6   2]
+ [ 32   0   0   0   0   0   6   0   9  11]
+ [ 51   0   0   0   0   0   4   0  16  18]
+ [ 57   0   0   0   0   0   7   0  33  35]
+ [ 48   0   0   0   0   0   9   0  31  21]
+ [ 47   0   0   0   1   0   6   0  32  32]
+ [ 29   0   0   0   0   0   1   0  15  18]
+ [ 31   0   0   0   0   0   0   0  90  62]
+ [  6   0   0   0   0   0  21   0  12 150]]
