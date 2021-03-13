@@ -131,7 +131,6 @@ Fig. 2 – Distribuições por (a) Ano, (b) Mês e (c) Dia da Semana
 	</tr>
 </table>
 
-</table>
 
 ![image](https://user-images.githubusercontent.com/63817167/111011900-b7087b80-8379-11eb-85d5-e6d29a9a098f.png)
 
