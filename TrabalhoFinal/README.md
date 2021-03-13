@@ -128,7 +128,7 @@ Fig. 2 – Distribuições por (a) Ano, (b) Mês e (c) Dia da Semana
     <td>5.011</td>
     <td>2.873</td>
 	<td>4.731</td>
-  </tr
+	</tr>
 </table>
 
 </table>
@@ -206,10 +206,9 @@ O KNN foi aplicado com os parâmetros 1, 3 e 5, sendo os resultados coletados e 
     <td>2.565</td>
     <td>2.847</td>
 	<td>2.695</td>
-  </tr
+	</tr>
 </table>
 
-</table>
 
 Abaixo é apresentada a Matriz de Confusão aplicando K = 1. E na sequência as Curvas ROC das ocorrências tipo 1 e tipo 10, mostrando a variação na curva.
 
@@ -351,7 +350,6 @@ Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – 
 	</tr>
 </table>
 
-</table>
 
 c) Support Vector Machine (SVM)
 
@@ -382,7 +380,7 @@ Os resultados são apresentados abaixo:
 	</tr>
 </table>
 
-</table>
+
 
 ![image](https://user-images.githubusercontent.com/63817167/111015481-b8d93b80-8387-11eb-9217-d677e738ffe6.png)
 
@@ -434,7 +432,6 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
 	</tr>
 </table>
 
-</table>
 
 ### IV.	CONCLUSÃO
 
