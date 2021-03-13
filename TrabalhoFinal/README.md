@@ -268,9 +268,7 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
     <td>2.631</td>
     <td>2.666</td>
 	<td>2.664</td>
-  </tr
-</table>
-
+	</tr>
 </table>
 
 b) Random Forests
@@ -300,10 +298,10 @@ O algoritmo foi parametrizado com 10 árvores, antes de tomar uma votação ou f
 <tr>
 	<td><b>Erro</b></td>
     <td>2.426</td>    
-  </tr
+	</tr>
 </table>
 
-</table>
+
 
 ![image](https://user-images.githubusercontent.com/63817167/111015585-55034280-8388-11eb-9002-59b7ef9361ac.png)
 
@@ -350,7 +348,7 @@ Fig. 15 – Curva ROC – RandomForests com Validação Cruzada (K-fold=5)  – 
 <tr>
 	<td><b>Erro</b></td>
     <td>2.468</td>    
-  </tr
+	</tr>
 </table>
 
 </table>
@@ -381,7 +379,7 @@ Os resultados são apresentados abaixo:
 <tr>
 	<td><b>Erro</b></td>
     <td>3.103</td>    
-  </tr
+	</tr>
 </table>
 
 </table>
@@ -433,7 +431,7 @@ Em seguida, foi realizado o teste com os outros 20% dos dados do dataset e se ob
 <tr>
 	<td><b>Erro</b></td>
     <td>2.933</td>    
-  </tr
+	</tr>
 </table>
 
 </table>
