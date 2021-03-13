@@ -101,7 +101,32 @@ Na sequência são apresentados os gráficos de distribuição do dataset basead
 
 Fig. 2 – Distribuições por (a) Ano, (b) Mês e (c) Dia da Semana
 
-![image](https://user-images.githubusercontent.com/63817167/111011894-b1129a80-8379-11eb-9eea-55104ec05e0f.png)
+<table>
+   <tr>
+    <td><b></td>
+    <td><b>Ano</b></td>
+    <td><b>Mês</b></td>
+	<td><b>Dia Semana</b></td>
+  </tr>
+  <tr>
+    <td>Terceiro Quartil</td>
+    <td>6.797</td>
+    <td>3.141</td>
+	<td>5.305</td>
+  </tr>
+  <tr>
+    <td>Mediana</td>
+    <td>5.306</td>
+    <td>2.984</td>
+	<td>4.837</td>
+  </tr>	
+<tr>
+    <td>Primeiro Quartil</td>
+    <td>5.011</td>
+    <td>2.873</td>
+	<td>4.731</td>
+  </tr
+</table>
 
 ![image](https://user-images.githubusercontent.com/63817167/111011900-b7087b80-8379-11eb-85d5-e6d29a9a098f.png)
 
